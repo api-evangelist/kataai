@@ -1,0 +1,14 @@
+generated: '2026-07-19'
+method: derived
+source: openapi/kataai-platform-openapi.yml
+summary:
+  types:
+  - http
+schemes:
+- name: bearerAuth
+  type: http
+  scheme: bearer
+  description: 'Bearer token in the Authorization header (Authorization: Bearer <token>). The
+    token may alternatively be supplied as a ?token= query string parameter.'
+  sources:
+  - openapi/kataai-platform-openapi.yml
