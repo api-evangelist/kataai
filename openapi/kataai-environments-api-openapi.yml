@@ -1,0 +1,162 @@
+openapi: 3.0.3
+info:
+  title: Kata.ai NL Prediction Auth Environments API
+  description: The Kata.ai Natural Language (NL) Prediction API exposes a trained Natural Language Understanding model built in NL Studio so it can be called from any application. Given an input sentence it returns detected entities (trait, dict, phrase) with scores, spans, resolved values, and entity relationships. Reconstructed from the published Kata Platform documentation (kata-ai/kata-platform-docs, nl-studio/nl-prediction-api); an API Evangelist derived specification, not a Kata.ai-published OpenAPI.
+  version: 1.0.0
+  contact:
+    name: Kata.ai
+    email: business@kata.ai
+    url: https://docs.kata.ai/nl-studio/nl-prediction-api
+  x-provenance:
+    generated: '2026-07-19'
+    method: generated
+    source: https://github.com/kata-ai/kata-platform-docs/blob/master/docs/nl-studio/nl-prediction-api.md
+servers:
+- url: https://geist.kata.ai
+  description: Kata.ai NL Prediction API host
+security:
+- bearerAuth: []
+tags:
+- name: Environments
+  description: Named environments binding a deployment version.
+paths:
+  /projects/{projectId}/environments:
+    parameters:
+    - $ref: '#/components/parameters/ProjectId'
+    get:
+      tags:
+      - Environments
+      operationId: listEnvironments
+      summary: List all environments
+      parameters:
+      - name: limit
+        in: query
+        schema:
+          type: integer
+      - name: page
+        in: query
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: Paged environments
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EnvironmentList'
+    post:
+      tags:
+      - Environments
+      operationId: createEnvironment
+      summary: Create an environment
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateEnvironmentRequest'
+      responses:
+        '200':
+          description: Environment created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Environment'
+  /projects/{projectId}/environments/{environmentId}:
+    parameters:
+    - $ref: '#/components/parameters/ProjectId'
+    - $ref: '#/components/parameters/EnvironmentId'
+    get:
+      tags:
+      - Environments
+      operationId: getEnvironment
+      summary: Get an environment
+      responses:
+        '200':
+          description: Environment
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Environment'
+    put:
+      tags:
+      - Environments
+      operationId: updateEnvironment
+      summary: Update an environment (change deployment version)
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                depVersion:
+                  type: string
+      responses:
+        '200':
+          description: Updated environment
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Environment'
+components:
+  schemas:
+    Environment:
+      type: object
+      required:
+      - name
+      - deploymentId
+      - deploymentVersion
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        slug:
+          type: string
+        deploymentId:
+          type: string
+        deploymentVersion:
+          type: string
+    CreateEnvironmentRequest:
+      type: object
+      properties:
+        depId:
+          type: string
+        depVersion:
+          type: string
+        name:
+          type: string
+        slug:
+          type: string
+    EnvironmentList:
+      type: object
+      properties:
+        page:
+          type: integer
+        limit:
+          type: integer
+        total:
+          type: integer
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/Environment'
+  parameters:
+    EnvironmentId:
+      name: environmentId
+      in: path
+      required: true
+      schema:
+        type: string
+    ProjectId:
+      name: projectId
+      in: path
+      required: true
+      schema:
+        type: string
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      description: 'Bearer token from NL Studio Settings (Authorization: Bearer <token>).'

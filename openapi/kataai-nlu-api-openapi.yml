@@ -1,0 +1,142 @@
+openapi: 3.0.3
+info:
+  title: Kata.ai NL Prediction Auth NLU API
+  description: The Kata.ai Natural Language (NL) Prediction API exposes a trained Natural Language Understanding model built in NL Studio so it can be called from any application. Given an input sentence it returns detected entities (trait, dict, phrase) with scores, spans, resolved values, and entity relationships. Reconstructed from the published Kata Platform documentation (kata-ai/kata-platform-docs, nl-studio/nl-prediction-api); an API Evangelist derived specification, not a Kata.ai-published OpenAPI.
+  version: 1.0.0
+  contact:
+    name: Kata.ai
+    email: business@kata.ai
+    url: https://docs.kata.ai/nl-studio/nl-prediction-api
+  x-provenance:
+    generated: '2026-07-19'
+    method: generated
+    source: https://github.com/kata-ai/kata-platform-docs/blob/master/docs/nl-studio/nl-prediction-api.md
+servers:
+- url: https://geist.kata.ai
+  description: Kata.ai NL Prediction API host
+security:
+- bearerAuth: []
+tags:
+- name: NLU
+  description: Natural Language Understanding models.
+paths:
+  /projects/{projectId}/nlus:
+    parameters:
+    - $ref: '#/components/parameters/ProjectId'
+    get:
+      tags:
+      - NLU
+      operationId: listNlus
+      summary: List NLUs
+      parameters:
+      - name: limit
+        in: query
+        schema:
+          type: integer
+      - name: page
+        in: query
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: Paged NLUs
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NluList'
+  /projects/{projectId}/nlus/{nluName}:
+    parameters:
+    - $ref: '#/components/parameters/ProjectId'
+    - name: nluName
+      in: path
+      required: true
+      schema:
+        type: string
+    get:
+      tags:
+      - NLU
+      operationId: getNlu
+      summary: Get an NLU
+      responses:
+        '200':
+          description: NLU
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NluSummary'
+    put:
+      tags:
+      - NLU
+      operationId: updateNlu
+      summary: Update an NLU
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/NLU'
+      responses:
+        '200':
+          description: Updated NLU
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NluSummary'
+components:
+  schemas:
+    NluSummary:
+      type: object
+      properties:
+        name:
+          type: string
+        lang:
+          type: string
+        visibility:
+          type: string
+    NluList:
+      type: object
+      properties:
+        page:
+          type: integer
+        limit:
+          type: integer
+        total:
+          type: integer
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/NluSummary'
+    NLU:
+      type: object
+      required:
+      - name
+      - lang
+      - visibility
+      properties:
+        name:
+          type: string
+        lang:
+          type: string
+          enum:
+          - id
+          - en
+        visibility:
+          type: string
+          enum:
+          - public
+          - private
+        entities:
+          type: object
+          additionalProperties: true
+  parameters:
+    ProjectId:
+      name: projectId
+      in: path
+      required: true
+      schema:
+        type: string
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      description: 'Bearer token from NL Studio Settings (Authorization: Bearer <token>).'

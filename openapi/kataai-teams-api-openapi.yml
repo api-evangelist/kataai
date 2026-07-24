@@ -1,0 +1,158 @@
+openapi: 3.0.3
+info:
+  title: Kata.ai NL Prediction Auth Teams API
+  description: The Kata.ai Natural Language (NL) Prediction API exposes a trained Natural Language Understanding model built in NL Studio so it can be called from any application. Given an input sentence it returns detected entities (trait, dict, phrase) with scores, spans, resolved values, and entity relationships. Reconstructed from the published Kata Platform documentation (kata-ai/kata-platform-docs, nl-studio/nl-prediction-api); an API Evangelist derived specification, not a Kata.ai-published OpenAPI.
+  version: 1.0.0
+  contact:
+    name: Kata.ai
+    email: business@kata.ai
+    url: https://docs.kata.ai/nl-studio/nl-prediction-api
+  x-provenance:
+    generated: '2026-07-19'
+    method: generated
+    source: https://github.com/kata-ai/kata-platform-docs/blob/master/docs/nl-studio/nl-prediction-api.md
+servers:
+- url: https://geist.kata.ai
+  description: Kata.ai NL Prediction API host
+security:
+- bearerAuth: []
+tags:
+- name: Teams
+  description: Teams and membership.
+paths:
+  /users/{userId}/teams:
+    parameters:
+    - name: userId
+      in: path
+      required: true
+      schema:
+        type: string
+    get:
+      tags:
+      - Teams
+      operationId: getUserTeams
+      summary: Get teams for a user
+      responses:
+        '200':
+          description: Teams
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Team'
+  /teams:
+    post:
+      tags:
+      - Teams
+      operationId: createTeam
+      summary: Create a team
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Team'
+      responses:
+        '200':
+          description: Team created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Team'
+  /teams/{teamId}:
+    parameters:
+    - name: teamId
+      in: path
+      required: true
+      schema:
+        type: string
+    get:
+      tags:
+      - Teams
+      operationId: getTeam
+      summary: Get a team
+      responses:
+        '200':
+          description: Team
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Team'
+    delete:
+      tags:
+      - Teams
+      operationId: deleteTeam
+      summary: Delete a team
+      responses:
+        '200':
+          description: Deleted team
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Team'
+  /teams/{teamId}/users/{userId}:
+    parameters:
+    - name: teamId
+      in: path
+      required: true
+      schema:
+        type: string
+    - name: userId
+      in: path
+      required: true
+      schema:
+        type: string
+    post:
+      tags:
+      - Teams
+      operationId: addTeamMember
+      summary: Add a member to a team
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - role
+              properties:
+                role:
+                  type: string
+      responses:
+        '200':
+          description: Member added
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  role:
+                    type: string
+components:
+  schemas:
+    Team:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        members:
+          type: array
+          items:
+            type: object
+            properties:
+              userId:
+                type: string
+              username:
+                type: string
+              roleId:
+                type: string
+              role:
+                type: string
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      description: 'Bearer token from NL Studio Settings (Authorization: Bearer <token>).'
