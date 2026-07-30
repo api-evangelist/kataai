@@ -1,7 +1,16 @@
 aid: kataai
 name: Kata.ai
-description: Kata.ai is a company surfaced as a portfolio company of 500-global and added to the API Evangelist
-  network as a stub for enrichment. This profile is a lead awaiting the enrichment pipeline.
+description: >-
+  Kata.ai is an Indonesian enterprise conversational-AI company that builds AI
+  agents and chatbots for customer experience, marketing, sales, and HR across
+  financial services, retail, healthcare, automotive, and government. Its
+  developer-facing Kata Platform lets teams create bot projects that bundle a
+  Bot, CMS, and a Natural Language Understanding (NLU) model, then deploy them
+  and connect messaging channels such as LINE, Telegram, WhatsApp, Facebook
+  Messenger, Slack, and Qiscus. Kata.ai exposes a public REST API for managing
+  projects, bots, deployments, environments, channels, teams, and NLUs, an NL
+  Prediction API for entity extraction from a trained model, the kata command
+  line tool, and the Aksara design system. Backed by 500 Global.
 url: https://raw.githubusercontent.com/api-evangelist/kataai/refs/heads/main/apis.yml
 x-type: company
 x-source: vc-portfolio
@@ -9,12 +18,124 @@ x-backed-by:
 - 500-global
 x-tier: stub
 x-tier-reason: portfolio-lead
+accessModel:
+  pricing: unknown
+  onboarding: self-serve
+  trial: false
+  try_now: false
+  public: false
+  label: Self-serve signup
+  confidence: medium
+  source:
+  - authentication
+  generated: '2026-07-22'
+  method: derived
 specificationVersion: '0.20'
 created: '2026-07-17'
-modified: '2026-07-17'
+modified: '2026-07-19'
+image: https://kata.ai/favicon.ico
 tags:
 - Company
-apis: []
+- Conversational AI
+- Chatbots
+- AI Agents
+- Natural Language Understanding
+- NLU
+- Customer Experience
+- Messaging
+- Indonesia
+- Bots
+apis:
+- aid: kataai:kataai-auth-api
+  name: Kata.ai Auth API
+  description: Login and token issuance.
+  humanURL: https://docs.kata.ai/kata-platform
+  baseURL: https://api.kata.ai
+  tags:
+  - Auth
+  properties:
+  - type: OpenAPI
+    url: openapi/kataai-auth-api-openapi.yml
+- aid: kataai:kataai-bots-api
+  name: Kata.ai Bots API
+  description: Bot revisions and drafts.
+  humanURL: https://docs.kata.ai/kata-platform
+  baseURL: https://api.kata.ai
+  tags:
+  - Bots
+  properties:
+  - type: OpenAPI
+    url: openapi/kataai-bots-api-openapi.yml
+- aid: kataai:kataai-channels-api
+  name: Kata.ai Channels API
+  description: Messaging channels (LINE, Telegram, WhatsApp, etc.).
+  humanURL: https://docs.kata.ai/kata-platform
+  baseURL: https://api.kata.ai
+  tags:
+  - Channels
+  properties:
+  - type: OpenAPI
+    url: openapi/kataai-channels-api-openapi.yml
+- aid: kataai:kataai-deployments-api
+  name: Kata.ai Deployments API
+  description: Deployment versions of a project bot.
+  humanURL: https://docs.kata.ai/kata-platform
+  baseURL: https://api.kata.ai
+  tags:
+  - Deployments
+  properties:
+  - type: OpenAPI
+    url: openapi/kataai-deployments-api-openapi.yml
+- aid: kataai:kataai-environments-api
+  name: Kata.ai Environments API
+  description: Named environments binding a deployment version.
+  humanURL: https://docs.kata.ai/kata-platform
+  baseURL: https://api.kata.ai
+  tags:
+  - Environments
+  properties:
+  - type: OpenAPI
+    url: openapi/kataai-environments-api-openapi.yml
+- aid: kataai:kataai-nlu-api
+  name: Kata.ai NLU API
+  description: Natural Language Understanding models.
+  humanURL: https://docs.kata.ai/kata-platform
+  baseURL: https://api.kata.ai
+  tags:
+  - NLU
+  properties:
+  - type: OpenAPI
+    url: openapi/kataai-nlu-api-openapi.yml
+- aid: kataai:kataai-prediction-api
+  name: Kata.ai Prediction API
+  description: Run entity prediction against a deployed NLU model.
+  humanURL: https://docs.kata.ai/kata-platform
+  baseURL: https://api.kata.ai
+  tags:
+  - Prediction
+  properties:
+  - type: OpenAPI
+    url: openapi/kataai-prediction-api-openapi.yml
+- aid: kataai:kataai-projects-api
+  name: Kata.ai Projects API
+  description: A project bundles one Bot, CMS, and/or NLU.
+  humanURL: https://docs.kata.ai/kata-platform
+  baseURL: https://api.kata.ai
+  tags:
+  - Projects
+  properties:
+  - type: OpenAPI
+    url: openapi/kataai-projects-api-openapi.yml
+- aid: kataai:kataai-teams-api
+  name: Kata.ai Teams API
+  description: Teams and membership.
+  humanURL: https://docs.kata.ai/kata-platform
+  baseURL: https://api.kata.ai
+  tags:
+  - Teams
+  properties:
+  - type: OpenAPI
+    url: openapi/kataai-teams-api-openapi.yml
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
@@ -23,3 +144,61 @@ maintainers:
 common:
 - type: Website
   url: https://kata.ai
+- type: DeveloperPortal
+  url: https://docs.kata.ai
+- type: Documentation
+  url: https://docs.kata.ai/kata-platform
+  name: Kata Platform Documentation
+- type: APIReference
+  url: https://github.com/kata-ai/kata-platform-docs/blob/master/docs/api/kataai-public-api.md
+  name: Kata.ai Public API Reference
+- type: GitHubOrganization
+  url: https://github.com/kata-ai
+- type: SignUp
+  url: https://cx.kata.ai/register
+- type: PrivacyPolicy
+  url: https://kata.ai/privacy-policy
+- type: Support
+  url: https://kata.ai/contact
+- type: OpenAPI
+  url: openapi/kataai-platform-openapi.yml
+  name: Kata.ai Platform Public API (OpenAPI)
+- type: OpenAPI
+  url: openapi/kataai-nlu-prediction-openapi.yml
+  name: Kata.ai NL Prediction API (OpenAPI)
+- type: Authentication
+  url: authentication/kataai-authentication.yml
+- type: Conventions
+  url: conventions/kataai-conventions.yml
+- type: ErrorCatalog
+  url: errors/kataai-problem-types.yml
+- type: Packages
+  url: packages/kataai-packages.yml
+- type: CLI
+  url: cli/kataai-cli.yml
+- type: Components
+  url: components/kataai-components.yml
+- type: DataModel
+  url: data-model/kataai-data-model.yml
+- type: Conformance
+  url: conformance/kataai-conformance.yml
+- type: Lifecycle
+  url: lifecycle/kataai-lifecycle.yml
+- type: DomainSecurity
+  url: security/kataai-domain-security.yml
+- type: MCPServer
+  url: mcp/kataai-mcp.yml
+- type: LLMsTxt
+  url: llms/kataai-llms.txt
+- type: Overlay
+  url: overlays/kataai-platform-overlay.yaml
+- type: AgentSkill
+  url: skills/_index.yml
+- type: Arazzo
+  url: arazzo/_index.yml
+  name: Kata.ai Arazzo workflow catalog
+x-enrichment:
+  date: '2026-07-19'
+  status: backfilled
+  pass: local-v1
+  note: backfilled from .gitignore signal + verified work evidence
