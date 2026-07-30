@@ -1,0 +1,93 @@
+arazzo: 1.0.1
+info:
+  title: Build and deploy a Kata.ai bot
+  version: 1.0.0
+  summary: Log in, create a project, push a bot revision, cut a deployment version, and bind an environment.
+sourceDescriptions:
+- name: platform
+  url: ../openapi/kataai-platform-openapi.yml
+  type: openapi
+workflows:
+- workflowId: buildAndDeployBot
+  summary: End-to-end creation and deployment of a Kata Platform bot.
+  description: >-
+    Authenticates against the Kata Platform Public API, creates a project,
+    pushes a bot revision, creates a deployment version referencing that
+    revision, and binds it to a named environment.
+  inputs:
+    type: object
+    required: [username, password, projectName]
+    properties:
+      username: { type: string }
+      password: { type: string }
+      projectName: { type: string, default: My New Project }
+      version: { type: string, default: 0.0.1 }
+      environmentName: { type: string, default: Development }
+      environmentSlug: { type: string, default: my-bot-dev }
+  steps:
+  - stepId: login
+    operationId: login
+    requestBody:
+      contentType: application/json
+      payload:
+        username: $inputs.username
+        password: $inputs.password
+    outputs:
+      token: $response.body#/id
+  - stepId: createProject
+    operationId: createProject
+    parameters:
+    - name: Authorization
+      in: header
+      value: "Bearer $steps.login.outputs.token"
+    requestBody:
+      contentType: application/json
+      payload:
+        name: $inputs.projectName
+        options:
+          bot: true
+          cms: true
+          nlu: true
+          timezone: 7
+          nluVisibility: private
+          nluLang: id
+    outputs:
+      projectId: $response.body#/id
+      botRevision: $response.body#/botLatestRevision
+  - stepId: createDeploymentVersion
+    operationId: createDeploymentVersion
+    parameters:
+    - name: projectId
+      in: path
+      value: $steps.createProject.outputs.projectId
+    - name: Authorization
+      in: header
+      value: "Bearer $steps.login.outputs.token"
+    requestBody:
+      contentType: application/json
+      payload:
+        version: $inputs.version
+        botRevision: $steps.createProject.outputs.botRevision
+    outputs:
+      deploymentVersion: $response.body#/version
+  - stepId: createEnvironment
+    operationId: createEnvironment
+    parameters:
+    - name: projectId
+      in: path
+      value: $steps.createProject.outputs.projectId
+    - name: Authorization
+      in: header
+      value: "Bearer $steps.login.outputs.token"
+    requestBody:
+      contentType: application/json
+      payload:
+        depId: $steps.createProject.outputs.projectId
+        depVersion: $steps.createDeploymentVersion.outputs.deploymentVersion
+        name: $inputs.environmentName
+        slug: $inputs.environmentSlug
+    outputs:
+      environmentId: $response.body#/id
+  outputs:
+    projectId: $steps.createProject.outputs.projectId
+    environmentId: $steps.createEnvironment.outputs.environmentId

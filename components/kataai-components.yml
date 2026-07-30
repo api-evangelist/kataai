@@ -1,0 +1,27 @@
+generated: '2026-07-19'
+method: searched
+source: https://github.com/kata-ai/aksara-ui
+name: Aksara Design System
+description: >-
+  Aksara is Kata.ai's open-source React design system used to build the Kata
+  Platform and CX product surfaces. It ships as a set of npm packages (React
+  components, core primitives, icons, helpers) rather than a hosted embed. This
+  is client-side UI, distinct from any server-side API client.
+families:
+- family: React components
+  package: "@aksara-ui/react"
+  loader: npm/ESM import
+  description: The primary React component library (buttons, forms, layout, feedback, etc.).
+- family: Core primitives
+  package: "@aksara-ui/core"
+  loader: npm/ESM import
+  description: Low-level primitives and design tokens.
+- family: Icons
+  package: "@aksara-ui/icons"
+  loader: npm/ESM import
+  description: Aksara icon set.
+- family: Helpers
+  package: "@aksara-ui/helpers"
+  loader: npm/ESM import
+  description: Shared utility helpers for the design system.
+repository: https://github.com/kata-ai/aksara-ui

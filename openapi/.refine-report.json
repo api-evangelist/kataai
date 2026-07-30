@@ -1,0 +1,30 @@
+{
+  "provider": "kataai",
+  "sources": [
+    "kataai-auth-api-openapi.yml",
+    "kataai-bots-api-openapi.yml",
+    "kataai-channels-api-openapi.yml",
+    "kataai-deployments-api-openapi.yml",
+    "kataai-environments-api-openapi.yml",
+    "kataai-nlu-api-openapi.yml",
+    "kataai-prediction-api-openapi.yml",
+    "kataai-projects-api-openapi.yml",
+    "kataai-teams-api-openapi.yml"
+  ],
+  "outputs": [
+    "kataai-auth-api-openapi.yml",
+    "kataai-bots-api-openapi.yml",
+    "kataai-channels-api-openapi.yml",
+    "kataai-deployments-api-openapi.yml",
+    "kataai-environments-api-openapi.yml",
+    "kataai-nlu-api-openapi.yml",
+    "kataai-prediction-api-openapi.yml",
+    "kataai-projects-api-openapi.yml",
+    "kataai-teams-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}

@@ -1,0 +1,24 @@
+generated: '2026-07-19'
+method: searched
+source: https://docs.kata.ai/kata-platform
+versioning:
+  api_versioning: none-documented
+  resource_versioning: >-
+    Bots are updated by creating new immutable revisions; deployments are
+    versioned; environments bind a specific deployment version.
+deprecation:
+  policy_url: null
+  sunset_header: false
+  notes: No public deprecation policy or RFC 8594 Sunset/Deprecation header support documented.
+sla:
+  url: null
+  uptime_target: null
+status_page: null
+rate_limit:
+  documented: true
+  limit: 100 requests per minute
+deprecated_operations: []
+notes: >-
+  Kata.ai does not publish a status page, SLA, or formal deprecation policy on
+  its developer surface as of this pass; no StatusPage or Deprecation pointer is
+  emitted (absence is recorded, not fabricated).

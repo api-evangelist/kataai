@@ -1,0 +1,16 @@
+generated: '2026-07-19'
+method: generated
+source: openapi/kataai-platform-openapi.yml, openapi/kataai-nlu-prediction-openapi.yml
+skills:
+- file: kataai-build-and-deploy-bot.md
+  name: Build and deploy a Kata.ai bot
+  api: openapi/kataai-platform-openapi.yml
+  operations: [login, createProject, createBotRevision, createDeploymentVersion, createEnvironment]
+- file: kataai-connect-channel.md
+  name: Connect a messaging channel
+  api: openapi/kataai-platform-openapi.yml
+  operations: [login, listEnvironments, createChannel, listChannels]
+- file: kataai-predict-nlu.md
+  name: Predict entities with an NLU model
+  api: openapi/kataai-nlu-prediction-openapi.yml
+  operations: [predict]

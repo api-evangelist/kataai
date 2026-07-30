@@ -1,0 +1,42 @@
+generated: '2026-07-19'
+method: searched
+source: https://www.npmjs.com/~kata-ai and https://github.com/kata-ai
+packages:
+- language: javascript
+  registry: npm
+  name: kata-cli
+  url: https://www.npmjs.com/package/kata-cli
+  install: npm install -g kata-cli
+  version: 2.7.2
+  official: true
+  description: Kata AI Command Line Tools (the `kata` CLI for the Kata Platform).
+  repository: https://github.com/kata-ai/kata-cli
+- language: javascript
+  registry: npm
+  name: "@aksara-ui/react"
+  url: https://www.npmjs.com/package/@aksara-ui/react
+  install: npm install @aksara-ui/react
+  official: true
+  description: Aksara Design System React component library from Kata.ai.
+  repository: https://github.com/kata-ai/aksara-ui
+- language: javascript
+  registry: npm
+  name: "@aksara-ui/core"
+  url: https://www.npmjs.com/package/@aksara-ui/core
+  install: npm install @aksara-ui/core
+  official: true
+  description: Aksara Design System core primitives.
+  repository: https://github.com/kata-ai/aksara-ui
+- language: javascript
+  registry: npm
+  name: "@aksara-ui/icons"
+  url: https://www.npmjs.com/package/@aksara-ui/icons
+  install: npm install @aksara-ui/icons
+  official: true
+  description: Aksara Design System icon set.
+  repository: https://github.com/kata-ai/aksara-ui
+notes: >-
+  Kata.ai does not publish server-side REST client SDKs for the Platform Public
+  API on npm/PyPI/etc.; the first-party developer libraries are the kata CLI and
+  the Aksara UI component packages. The Platform API is consumed over HTTP with a
+  bearer token.

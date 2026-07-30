@@ -1,0 +1,26 @@
+generated: '2026-07-19'
+method: derived
+source: openapi/kataai-platform-openapi.yml, openapi/kataai-nlu-prediction-openapi.yml
+standards:
+- id: oauth2
+  conforms: false
+  evidence: Auth is a bearer token issued via POST /login, not an OAuth2 flow.
+- id: openid-connect
+  conforms: false
+- id: rfc9457-problem-details
+  conforms: false
+  evidence: Errors return plain-text string bodies, not application/problem+json.
+- id: http-bearer-auth
+  conforms: true
+  evidence: RFC 6750 bearer token in Authorization header.
+- id: pagination
+  conforms: true
+  evidence: List endpoints use page/limit with page/limit/total/data envelope.
+- id: idempotency
+  conforms: false
+  evidence: No idempotency-key header/parameter documented.
+- id: json-api
+  conforms: false
+- id: rate-limiting
+  conforms: true
+  evidence: Documented 100 req/min limit signaled via HTTP 429.

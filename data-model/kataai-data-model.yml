@@ -1,0 +1,68 @@
+generated: '2026-07-19'
+method: derived
+source: openapi/kataai-platform-openapi.yml
+description: >-
+  Entity-relationship graph derived from the Kata Platform Public API object
+  definitions and endpoint hierarchy.
+entities:
+- name: Project
+  description: Bundles one Bot, CMS, and/or NLU; the top-level container.
+  key: id
+- name: Bot
+  description: The conversational bot definition (flows, intents, states, NLUs).
+  key: id
+- name: NLU
+  description: A Natural Language Understanding model (entities, training data).
+  key: name
+- name: Deployment
+  description: A versioned deployment of a project bot.
+  key: version
+- name: Environment
+  description: A named environment binding a specific deployment version.
+  key: id
+- name: Channel
+  description: A messaging channel (LINE, Telegram, WhatsApp, ...) on an environment.
+  key: id
+- name: Team
+  description: A team owning projects, with members and roles.
+  key: id
+- name: Token
+  description: A bearer token issued at login, scoped to user/team/bot/role.
+  key: id
+relationships:
+- from: Project
+  to: Bot
+  type: has_one
+  via: botLatestRevision
+- from: Project
+  to: NLU
+  type: has_many
+  via: nlus
+- from: Deployment
+  to: Project
+  type: belongs_to
+  via: projectId
+- from: Deployment
+  to: Bot
+  type: has_one
+  via: botRevision
+- from: Environment
+  to: Project
+  type: belongs_to
+  via: projectId
+- from: Environment
+  to: Deployment
+  type: has_one
+  via: deploymentVersion
+- from: Channel
+  to: Environment
+  type: belongs_to
+  via: environmentId
+- from: Token
+  to: Team
+  type: belongs_to
+  via: teamId
+- from: Team
+  to: Project
+  type: has_many
+  via: ownership

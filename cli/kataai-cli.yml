@@ -1,0 +1,41 @@
+generated: '2026-07-19'
+method: searched
+source: https://github.com/kata-ai/kata-cli
+name: Kata CLI
+binary: kata
+package: kata-cli
+version: 2.7.2
+language: typescript
+repository: https://github.com/kata-ai/kata-cli
+docs: https://docs.kata.ai/kata-platform
+install:
+- method: npm
+  command: npm install -g kata-cli
+description: >-
+  The `kata` command line tool for the Kata Platform. Authenticates a user,
+  scaffolds and initializes bot projects, pushes bot/NLU revisions, and manages
+  deployments and versions from the terminal. Mirrors the Platform Public API
+  resource surface (projects, bots, deployments, environments, channels, NLUs,
+  teams).
+command_groups:
+- group: auth
+  description: Login and session management against api.kata.ai.
+- group: init
+  description: Scaffold and initialize a new bot project.
+- group: bot
+  description: Manage the bot definition and push new bot revisions.
+- group: nlu
+  description: Manage and train NLU models.
+- group: deployment
+  description: Create and manage deployment versions.
+- group: environment
+  description: Manage named environments binding a deployment version.
+- group: channel
+  description: Manage messaging channels for an environment.
+- group: team
+  description: Manage teams and members.
+notes: >-
+  Command groups are derived from the kata-cli source components
+  (components/bots, components/nlus, components/projects, components/bots/
+  deployment|environment|channel, components/users/team). The CLI's default API
+  endpoint (zaunUrl) is https://api.kata.ai.

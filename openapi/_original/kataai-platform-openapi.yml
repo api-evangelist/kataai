@@ -1,0 +1,781 @@
+openapi: 3.0.3
+info:
+  title: Kata.ai Platform Public API
+  description: >-
+    Public REST API for the Kata Platform (Kata.ai). Manage bot projects,
+    bots and drafts, deployments, environments, messaging channels, teams,
+    and Natural Language Understanding (NLU) models used to build Indonesian
+    conversational AI assistants. Reconstructed from the published Kata
+    Platform documentation (kata-ai/kata-platform-docs); this is an API
+    Evangelist derived specification, not a Kata.ai-published OpenAPI file.
+  version: '1.0.0'
+  contact:
+    name: Kata.ai
+    email: business@kata.ai
+    url: https://docs.kata.ai/kata-platform
+  x-provenance:
+    generated: '2026-07-19'
+    method: generated
+    source: https://github.com/kata-ai/kata-platform-docs/blob/master/docs/api/kataai-public-api.md
+servers:
+  - url: https://api.kata.ai
+    description: Kata Platform public API (default zaunUrl in kata-cli)
+security:
+  - bearerAuth: []
+tags:
+  - name: Auth
+    description: Login and token issuance.
+  - name: Projects
+    description: A project bundles one Bot, CMS, and/or NLU.
+  - name: Bots
+    description: Bot revisions and drafts.
+  - name: Deployments
+    description: Deployment versions of a project bot.
+  - name: Environments
+    description: Named environments binding a deployment version.
+  - name: Channels
+    description: Messaging channels (LINE, Telegram, WhatsApp, etc.).
+  - name: Teams
+    description: Teams and membership.
+  - name: NLU
+    description: Natural Language Understanding models.
+paths:
+  /login:
+    post:
+      tags: [Auth]
+      operationId: login
+      summary: Login and obtain a bearer token
+      description: Authenticate with username and password to receive a bearer token.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [username, password]
+              properties:
+                username: { type: string }
+                password: { type: string }
+      responses:
+        '200':
+          description: Token issued
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/Token' }
+        '400': { $ref: '#/components/responses/BadRequest' }
+        '403': { $ref: '#/components/responses/Forbidden' }
+        '429': { $ref: '#/components/responses/TooManyRequests' }
+        '500': { $ref: '#/components/responses/ServerError' }
+  /projects/:
+    get:
+      tags: [Projects]
+      operationId: listProjects
+      summary: List projects
+      responses:
+        '200':
+          description: Paged list of projects
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/ProjectList' }
+        '403': { $ref: '#/components/responses/Forbidden' }
+        '429': { $ref: '#/components/responses/TooManyRequests' }
+    post:
+      tags: [Projects]
+      operationId: createProject
+      summary: Create a project
+      description: Creates a project consisting of one Bot, CMS, and/or NLU.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema: { $ref: '#/components/schemas/CreateProjectRequest' }
+      responses:
+        '200':
+          description: Project created
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/Project' }
+        '400': { $ref: '#/components/responses/BadRequest' }
+        '403': { $ref: '#/components/responses/Forbidden' }
+  /projects/{projectId}:
+    parameters:
+      - $ref: '#/components/parameters/ProjectId'
+    get:
+      tags: [Projects]
+      operationId: getProject
+      summary: Get a project
+      responses:
+        '200':
+          description: Project
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/Project' }
+        '403': { $ref: '#/components/responses/Forbidden' }
+    put:
+      tags: [Projects]
+      operationId: updateProject
+      summary: Update a project
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema: { $ref: '#/components/schemas/Project' }
+      responses:
+        '200':
+          description: Updated project
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/Project' }
+        '403': { $ref: '#/components/responses/Forbidden' }
+  /projects/{projectId}/bot/:
+    parameters:
+      - $ref: '#/components/parameters/ProjectId'
+    get:
+      tags: [Bots]
+      operationId: getBot
+      summary: Get the project bot
+      responses:
+        '200':
+          description: Bot
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/Bot' }
+        '403': { $ref: '#/components/responses/Forbidden' }
+  /projects/{projectId}/bot/revisions/:
+    parameters:
+      - $ref: '#/components/parameters/ProjectId'
+    post:
+      tags: [Bots]
+      operationId: createBotRevision
+      summary: Update bot (create a new bot revision)
+      description: Updating a bot is done by creating a new bot revision. Rejected if the version already exists.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema: { $ref: '#/components/schemas/Bot' }
+      responses:
+        '200':
+          description: New bot revision
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/Bot' }
+        '400': { $ref: '#/components/responses/BadRequest' }
+        '403': { $ref: '#/components/responses/Forbidden' }
+  /projects/{projectId}/bot/draft:
+    parameters:
+      - $ref: '#/components/parameters/ProjectId'
+    get:
+      tags: [Bots]
+      operationId: getBotDraft
+      summary: Get bot draft
+      responses:
+        '200':
+          description: Bot draft
+          content:
+            application/json:
+              schema: { type: object }
+    put:
+      tags: [Bots]
+      operationId: updateBotDraft
+      summary: Create or update bot draft
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema: { type: object }
+      responses:
+        '200':
+          description: Draft id
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  draftId: { type: string }
+    delete:
+      tags: [Bots]
+      operationId: deleteBotDraft
+      summary: Delete bot draft
+      responses:
+        '200':
+          description: Draft id
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  draftId: { type: string }
+  /projects/{projectId}/deployment/versions:
+    parameters:
+      - $ref: '#/components/parameters/ProjectId'
+    post:
+      tags: [Deployments]
+      operationId: createDeploymentVersion
+      summary: Create a new deployment version
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema: { $ref: '#/components/schemas/Deployment' }
+      responses:
+        '200':
+          description: Deployment created
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/Deployment' }
+        '403': { $ref: '#/components/responses/Forbidden' }
+  /projects/{projectId}/deployment/:
+    parameters:
+      - $ref: '#/components/parameters/ProjectId'
+    get:
+      tags: [Deployments]
+      operationId: getLatestDeployment
+      summary: Get the latest deployment version
+      responses:
+        '200':
+          description: Deployment
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/Deployment' }
+  /projects/{projectId}/deployment/versions/:
+    parameters:
+      - $ref: '#/components/parameters/ProjectId'
+    get:
+      tags: [Deployments]
+      operationId: listDeploymentVersions
+      summary: List deployment versions
+      responses:
+        '200':
+          description: Deployment versions
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/Deployment' }
+  /projects/{projectId}/deployment/versions/{version}:
+    parameters:
+      - $ref: '#/components/parameters/ProjectId'
+      - name: version
+        in: path
+        required: true
+        schema: { type: string }
+    get:
+      tags: [Deployments]
+      operationId: getDeploymentVersion
+      summary: Get a deployment version
+      responses:
+        '200':
+          description: Deployment
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/Deployment' }
+    put:
+      tags: [Deployments]
+      operationId: updateDeploymentVersion
+      summary: Update a deployment version
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema: { $ref: '#/components/schemas/Deployment' }
+      responses:
+        '200':
+          description: Updated deployment
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/Deployment' }
+    delete:
+      tags: [Deployments]
+      operationId: deleteDeploymentVersion
+      summary: Delete a deployment version
+      responses:
+        '200':
+          description: Deleted deployment
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/Deployment' }
+  /projects/{projectId}/environments:
+    parameters:
+      - $ref: '#/components/parameters/ProjectId'
+    get:
+      tags: [Environments]
+      operationId: listEnvironments
+      summary: List all environments
+      parameters:
+        - { name: limit, in: query, schema: { type: integer } }
+        - { name: page, in: query, schema: { type: integer } }
+      responses:
+        '200':
+          description: Paged environments
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/EnvironmentList' }
+    post:
+      tags: [Environments]
+      operationId: createEnvironment
+      summary: Create an environment
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema: { $ref: '#/components/schemas/CreateEnvironmentRequest' }
+      responses:
+        '200':
+          description: Environment created
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/Environment' }
+  /projects/{projectId}/environments/{environmentId}:
+    parameters:
+      - $ref: '#/components/parameters/ProjectId'
+      - $ref: '#/components/parameters/EnvironmentId'
+    get:
+      tags: [Environments]
+      operationId: getEnvironment
+      summary: Get an environment
+      responses:
+        '200':
+          description: Environment
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/Environment' }
+    put:
+      tags: [Environments]
+      operationId: updateEnvironment
+      summary: Update an environment (change deployment version)
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                depVersion: { type: string }
+      responses:
+        '200':
+          description: Updated environment
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/Environment' }
+  /projects/{projectId}/environments/{environmentId}/channels:
+    parameters:
+      - $ref: '#/components/parameters/ProjectId'
+      - $ref: '#/components/parameters/EnvironmentId'
+    get:
+      tags: [Channels]
+      operationId: listChannels
+      summary: List channels
+      parameters:
+        - { name: limit, in: query, schema: { type: integer } }
+        - { name: page, in: query, schema: { type: integer } }
+      responses:
+        '200':
+          description: Paged channels
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/ChannelList' }
+    post:
+      tags: [Channels]
+      operationId: createChannel
+      summary: Create a channel
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema: { $ref: '#/components/schemas/Channel' }
+      responses:
+        '200':
+          description: Channel created
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/Channel' }
+  /projects/{projectId}/environments/{environmentId}/channels/{channelId}:
+    parameters:
+      - $ref: '#/components/parameters/ProjectId'
+      - $ref: '#/components/parameters/EnvironmentId'
+      - name: channelId
+        in: path
+        required: true
+        schema: { type: string }
+    get:
+      tags: [Channels]
+      operationId: getChannel
+      summary: Get a channel
+      responses:
+        '200':
+          description: Channel
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/Channel' }
+    put:
+      tags: [Channels]
+      operationId: updateChannel
+      summary: Update a channel
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema: { $ref: '#/components/schemas/Channel' }
+      responses:
+        '200':
+          description: Updated channel
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/Channel' }
+    delete:
+      tags: [Channels]
+      operationId: deleteChannel
+      summary: Delete a channel
+      responses:
+        '200':
+          description: Deleted channel
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/Channel' }
+  /projects/{projectId}/nlus:
+    parameters:
+      - $ref: '#/components/parameters/ProjectId'
+    get:
+      tags: [NLU]
+      operationId: listNlus
+      summary: List NLUs
+      parameters:
+        - { name: limit, in: query, schema: { type: integer } }
+        - { name: page, in: query, schema: { type: integer } }
+      responses:
+        '200':
+          description: Paged NLUs
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/NluList' }
+  /projects/{projectId}/nlus/{nluName}:
+    parameters:
+      - $ref: '#/components/parameters/ProjectId'
+      - name: nluName
+        in: path
+        required: true
+        schema: { type: string }
+    get:
+      tags: [NLU]
+      operationId: getNlu
+      summary: Get an NLU
+      responses:
+        '200':
+          description: NLU
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/NluSummary' }
+    put:
+      tags: [NLU]
+      operationId: updateNlu
+      summary: Update an NLU
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema: { $ref: '#/components/schemas/NLU' }
+      responses:
+        '200':
+          description: Updated NLU
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/NluSummary' }
+  /users/{userId}/teams:
+    parameters:
+      - name: userId
+        in: path
+        required: true
+        schema: { type: string }
+    get:
+      tags: [Teams]
+      operationId: getUserTeams
+      summary: Get teams for a user
+      responses:
+        '200':
+          description: Teams
+          content:
+            application/json:
+              schema:
+                type: array
+                items: { $ref: '#/components/schemas/Team' }
+  /teams:
+    post:
+      tags: [Teams]
+      operationId: createTeam
+      summary: Create a team
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema: { $ref: '#/components/schemas/Team' }
+      responses:
+        '200':
+          description: Team created
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/Team' }
+  /teams/{teamId}:
+    parameters:
+      - name: teamId
+        in: path
+        required: true
+        schema: { type: string }
+    get:
+      tags: [Teams]
+      operationId: getTeam
+      summary: Get a team
+      responses:
+        '200':
+          description: Team
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/Team' }
+    delete:
+      tags: [Teams]
+      operationId: deleteTeam
+      summary: Delete a team
+      responses:
+        '200':
+          description: Deleted team
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/Team' }
+  /teams/{teamId}/users/{userId}:
+    parameters:
+      - name: teamId
+        in: path
+        required: true
+        schema: { type: string }
+      - name: userId
+        in: path
+        required: true
+        schema: { type: string }
+    post:
+      tags: [Teams]
+      operationId: addTeamMember
+      summary: Add a member to a team
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [role]
+              properties:
+                role: { type: string }
+      responses:
+        '200':
+          description: Member added
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  role: { type: string }
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      description: >-
+        Bearer token in the Authorization header (Authorization: Bearer
+        <token>). The token may alternatively be supplied as a ?token= query
+        string parameter.
+  parameters:
+    ProjectId:
+      name: projectId
+      in: path
+      required: true
+      schema: { type: string }
+    EnvironmentId:
+      name: environmentId
+      in: path
+      required: true
+      schema: { type: string }
+  responses:
+    BadRequest:
+      description: Wrong API usage. Please refer to the documentation!
+      content:
+        application/json:
+          schema: { type: string }
+    Forbidden:
+      description: You're not authorized to view this page.
+      content:
+        application/json:
+          schema: { type: string }
+    TooManyRequests:
+      description: 'Ratelimit exceeded! 100 per minute'
+      content:
+        application/json:
+          schema: { type: string }
+    ServerError:
+      description: Server is not available at the moment. We are working on it.
+      content:
+        application/json:
+          schema: { type: string }
+  schemas:
+    Token:
+      type: object
+      properties:
+        id: { type: string, description: Bearer token }
+        type: { type: string }
+        label: { type: string }
+        userId: { type: string }
+        teamId: { type: string }
+        botId: { type: string }
+        roleId: { type: string }
+        expire: { type: integer }
+    Project:
+      type: object
+      required: [name, botLatestRevision, options]
+      properties:
+        id: { type: string }
+        name: { type: string }
+        label: { type: string }
+        description: { type: string }
+        botLatestRevision: { type: string }
+        nluLatestRevision: { type: string }
+        cmsLatestRevision: { type: string }
+        options:
+          type: object
+          properties:
+            bot: { type: boolean }
+            cms: { type: boolean }
+            nlu: { type: boolean }
+            timezone: { type: integer }
+            nluVisibility: { type: string, enum: [private, public] }
+            nluLang: { type: string }
+            nluId: { type: string }
+    CreateProjectRequest:
+      type: object
+      required: [name, options]
+      properties:
+        name: { type: string }
+        options:
+          type: object
+          properties:
+            bot: { type: boolean }
+            cms: { type: boolean }
+            nlu: { type: boolean }
+            timezone: { type: integer }
+            nluVisibility: { type: string, enum: [private, public] }
+            nluLang: { type: string }
+    ProjectList:
+      type: object
+      properties:
+        page: { type: integer }
+        limit: { type: integer }
+        total: { type: integer }
+        data:
+          type: array
+          items: { $ref: '#/components/schemas/Project' }
+    Deployment:
+      type: object
+      required: [version, botRevision]
+      properties:
+        id: { type: string }
+        name: { type: string }
+        version: { type: string }
+        botRevision: { type: string }
+        nluRevision: { type: string }
+        cmsRevision: { type: string }
+        modules: { type: 'null' }
+    Environment:
+      type: object
+      required: [name, deploymentId, deploymentVersion]
+      properties:
+        id: { type: string }
+        name: { type: string }
+        slug: { type: string }
+        deploymentId: { type: string }
+        deploymentVersion: { type: string }
+    CreateEnvironmentRequest:
+      type: object
+      properties:
+        depId: { type: string }
+        depVersion: { type: string }
+        name: { type: string }
+        slug: { type: string }
+    EnvironmentList:
+      type: object
+      properties:
+        page: { type: integer }
+        limit: { type: integer }
+        total: { type: integer }
+        data:
+          type: array
+          items: { $ref: '#/components/schemas/Environment' }
+    Channel:
+      type: object
+      required: [name, type, url]
+      properties:
+        id: { type: string }
+        name: { type: string }
+        type:
+          type: string
+          enum: [generic, line, fbmessenger, telegram, twitter, slack, spark, bbm, qiscus, whatsapp]
+        url: { type: string }
+        rpmLimit: { type: integer }
+        agentId: { type: string }
+        webhook: { type: string }
+        options: { type: object, additionalProperties: true }
+    ChannelList:
+      type: object
+      properties:
+        page: { type: integer }
+        limit: { type: integer }
+        total: { type: integer }
+        data:
+          type: array
+          items: { $ref: '#/components/schemas/Channel' }
+    Bot:
+      type: object
+      required: [id, name, version]
+      properties:
+        id: { type: string }
+        name: { type: string }
+        version: { type: string }
+        desc: { type: string }
+        lang: { type: string }
+        timezone: { type: integer }
+        flows: { type: object, additionalProperties: true }
+        nlus: { type: object, additionalProperties: true }
+        methods: { type: object, additionalProperties: true }
+        config: { type: object, additionalProperties: true }
+        revision: { type: string }
+    NLU:
+      type: object
+      required: [name, lang, visibility]
+      properties:
+        name: { type: string }
+        lang: { type: string, enum: [id, en] }
+        visibility: { type: string, enum: [public, private] }
+        entities: { type: object, additionalProperties: true }
+    NluSummary:
+      type: object
+      properties:
+        name: { type: string }
+        lang: { type: string }
+        visibility: { type: string }
+    NluList:
+      type: object
+      properties:
+        page: { type: integer }
+        limit: { type: integer }
+        total: { type: integer }
+        data:
+          type: array
+          items: { $ref: '#/components/schemas/NluSummary' }
+    Team:
+      type: object
+      properties:
+        id: { type: string }
+        name: { type: string }
+        members:
+          type: array
+          items:
+            type: object
+            properties:
+              userId: { type: string }
+              username: { type: string }
+              roleId: { type: string }
+              role: { type: string }

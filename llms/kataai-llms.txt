@@ -1,0 +1,28 @@
+# Kata.ai
+
+> Kata.ai is an Indonesian enterprise conversational-AI company building AI agents and chatbots for customer experience, marketing, sales, and HR. Its Kata Platform lets teams create bot projects that bundle a Bot, CMS, and a Natural Language Understanding (NLU) model, deploy them, and connect messaging channels (LINE, Telegram, WhatsApp, Facebook Messenger, Slack, Qiscus). A public REST API manages projects, bots, deployments, environments, channels, teams, and NLUs; an NL Prediction API serves trained models for entity extraction. Backed by 500 Global.
+
+## APIs
+- [Kata.ai Platform Public API](https://docs.kata.ai/kata-platform): Manage projects, bots, deployments, environments, channels, teams, and NLUs. Base URL https://api.kata.ai. Bearer-token auth; JSON only; 100 req/min.
+- [Kata.ai NL Prediction API](https://docs.kata.ai/nl-studio/nl-prediction-api): POST a sentence to a deployed NLU model and receive detected entities. Base URL https://geist.kata.ai.
+
+## Specs
+- [Platform Public API OpenAPI](https://raw.githubusercontent.com/api-evangelist/kataai/refs/heads/main/openapi/kataai-platform-openapi.yml)
+- [NL Prediction API OpenAPI](https://raw.githubusercontent.com/api-evangelist/kataai/refs/heads/main/openapi/kataai-nlu-prediction-openapi.yml)
+
+## Docs
+- [Kata Platform Documentation](https://docs.kata.ai/kata-platform)
+- [Public API Reference](https://github.com/kata-ai/kata-platform-docs/blob/master/docs/api/kataai-public-api.md)
+- [NL Prediction API](https://docs.kata.ai/nl-studio/nl-prediction-api)
+- [Kata CLI (kata-cli)](https://github.com/kata-ai/kata-cli)
+- [Aksara Design System](https://github.com/kata-ai/aksara-ui)
+
+## Developer
+- [GitHub Organization](https://github.com/kata-ai)
+- [Sign Up (KataCX)](https://cx.kata.ai/register)
+- [Contact / Support](https://kata.ai/contact)
+- [Privacy Policy](https://kata.ai/privacy-policy)
+
+## Authentication
+- Bearer token in the Authorization header (Authorization: Bearer <token>), or a ?token= query parameter.
+- Obtain a token via POST /login (username + password), or from NL Studio > Settings for the NL Prediction API.

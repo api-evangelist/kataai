@@ -1,0 +1,29 @@
+generated: '2026-07-19'
+method: searched
+source: https://github.com/kata-ai/kata-platform-docs/blob/master/docs/api/kataai-public-api.md
+format: http-status-plaintext
+envelope: >-
+  Errors are returned as an HTTP status code with a plain-text string body (not
+  application/problem+json).
+problems:
+- status: 200
+  title: OK
+  meaning: Returns the data.
+- status: 400
+  title: Bad Request
+  message: Wrong API usage. Please refer to the documentation!
+  remediation: Check the request shape against the API documentation.
+- status: 403
+  title: Forbidden
+  message: You're not authorized to view this page.
+  remediation: Provide a valid bearer token with the required RBAC permission.
+- status: 429
+  title: Too Many Requests
+  message: 'Ratelimit exceeded! 100 per minute'
+  remediation: Throttle to under 100 requests per minute and retry.
+- status: 500
+  title: Internal Server Error
+  message: Server is not available at the moment. We are working on it.
+  remediation: Retry later; transient server-side error.
+source_operations:
+- openapi/kataai-platform-openapi.yml

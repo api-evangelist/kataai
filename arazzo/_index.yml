@@ -1,0 +1,8 @@
+generated: '2026-07-19'
+method: derived
+source: openapi/kataai-platform-openapi.yml
+workflows:
+- file: kataai-build-and-deploy-bot.yml
+  workflowId: buildAndDeployBot
+  title: Build and deploy a Kata.ai bot
+  summary: Log in, create a project, push a bot revision, cut a deployment version, and bind an environment.

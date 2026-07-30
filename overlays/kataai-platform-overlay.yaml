@@ -1,0 +1,21 @@
+overlay: 1.0.0
+info:
+  title: API Evangelist enhancements for Kata.ai Platform Public API
+  version: 1.0.0
+extends: openapi/kataai-platform-openapi.yml
+actions:
+- target: $.info
+  update:
+    x-apievangelist-enriched: true
+    x-apievangelist-provider: kataai
+    x-apievangelist-auth: bearer-token
+    x-apievangelist-rate-limit: 100 requests per minute
+    x-apievangelist-pagination: page/limit with page/limit/total/data envelope
+- target: $.info
+  update:
+    x-apievangelist-source: https://github.com/kata-ai/kata-platform-docs/blob/master/docs/api/kataai-public-api.md
+    x-apievangelist-note: >-
+      Specification reconstructed by API Evangelist from the published Kata
+      Platform documentation. It is a derived spec, not a Kata.ai-published
+      OpenAPI file; operation shapes reflect the documented request/response
+      contracts.

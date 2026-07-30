@@ -1,0 +1,59 @@
+generated: '2026-07-19'
+method: searched
+source: https://github.com/kata-ai/kata-platform-docs/blob/master/docs/api/kataai-public-api.md
+summary: >-
+  Cross-cutting request/response semantics for the Kata Platform Public API,
+  captured from the published documentation and the derived OpenAPI.
+authentication:
+  style: bearer-token
+  header: 'Authorization: Bearer <token>'
+  alternative: '?token=<token> query string'
+  obtain_via: POST /login (username + password) -> Token.id
+  reference: authentication/kataai-authentication.yml
+content_negotiation:
+  request_header: 'Content-Type: application/json'
+  response_header: 'Accept: application/json'
+  formats: [json]
+pagination:
+  style: page-number
+  request_params:
+    - limit
+    - page
+  response_fields:
+    - page
+    - limit
+    - total
+    - data
+  notes: >-
+    List endpoints (projects, environments, channels, NLUs) return an envelope
+    with page/limit/total plus a data[] array.
+rate_limiting:
+  documented: true
+  limit: 100 requests per minute
+  signal: HTTP 429 with body "Ratelimit exceeded! 100 per minute"
+  per_channel: Channel objects also carry an rpmLimit (requests-per-minute) field.
+idempotency:
+  supported: false
+  notes: >-
+    The Kata Platform Public API does not document an idempotency-key header or
+    parameter. Bot/deployment updates are modeled as new immutable revisions
+    (POST /projects/{projectId}/bot/revisions/, deployment versions), which is a
+    versioning strategy rather than request idempotency.
+access_control:
+  model: RBAC permission strings per operation
+  notes: >-
+    Operations are gated by permission strings such as create_own_projects /
+    create_any_projects, list_own_environments, delete_any_channels. These are
+    role-based access-control grants, not OAuth2 scopes, so no OAuthScopes
+    artifact is emitted.
+error_envelope:
+  style: plain-string-body
+  reference: errors/kataai-problem-types.yml
+  notes: >-
+    Error responses return an HTTP status with a plain string message rather
+    than an RFC 9457 problem+json envelope.
+versioning:
+  api_versioning: none-documented
+  resource_versioning: >-
+    Bots and deployments are versioned via revisions/versions; environments bind
+    a specific deployment version.

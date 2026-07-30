@@ -1,0 +1,54 @@
+generated: '2026-07-19'
+method: derived
+status: candidate
+source: openapi/kataai-platform-openapi.yml, openapi/kataai-nlu-prediction-openapi.yml
+notes: >-
+  Kata.ai does not publish an official MCP server. This is a candidate tool list
+  derived one-per-operation from the Kata Platform Public API and NL Prediction
+  API OpenAPI definitions, as a starting point for an MCP wrapper.
+server:
+  name: kataai
+  transport: http
+tools:
+- name: login
+  description: Login and obtain a bearer token.
+  source_operation: openapi/kataai-platform-openapi.yml#login
+- name: list_projects
+  description: List projects.
+  source_operation: openapi/kataai-platform-openapi.yml#listProjects
+- name: create_project
+  description: Create a project (Bot, CMS, and/or NLU).
+  source_operation: openapi/kataai-platform-openapi.yml#createProject
+- name: get_project
+  description: Get a project.
+  source_operation: openapi/kataai-platform-openapi.yml#getProject
+- name: update_project
+  description: Update a project.
+  source_operation: openapi/kataai-platform-openapi.yml#updateProject
+- name: get_bot
+  description: Get the project bot.
+  source_operation: openapi/kataai-platform-openapi.yml#getBot
+- name: create_bot_revision
+  description: Update the bot by creating a new revision.
+  source_operation: openapi/kataai-platform-openapi.yml#createBotRevision
+- name: create_deployment_version
+  description: Create a new deployment version.
+  source_operation: openapi/kataai-platform-openapi.yml#createDeploymentVersion
+- name: list_deployment_versions
+  description: List deployment versions.
+  source_operation: openapi/kataai-platform-openapi.yml#listDeploymentVersions
+- name: create_environment
+  description: Create an environment binding a deployment version.
+  source_operation: openapi/kataai-platform-openapi.yml#createEnvironment
+- name: list_channels
+  description: List messaging channels for an environment.
+  source_operation: openapi/kataai-platform-openapi.yml#listChannels
+- name: create_channel
+  description: Create a messaging channel.
+  source_operation: openapi/kataai-platform-openapi.yml#createChannel
+- name: list_nlus
+  description: List NLU models in a project.
+  source_operation: openapi/kataai-platform-openapi.yml#listNlus
+- name: predict
+  description: Predict entities for a sentence against a deployed NLU model.
+  source_operation: openapi/kataai-nlu-prediction-openapi.yml#predict
