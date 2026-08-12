@@ -161,10 +161,10 @@ common:
 - type: Support
   url: https://kata.ai/contact
 - type: OpenAPI
-  url: openapi/kataai-platform-openapi.yml
+  url: openapi/_original/kataai-platform-openapi.yml
   name: Kata.ai Platform Public API (OpenAPI)
 - type: OpenAPI
-  url: openapi/kataai-nlu-prediction-openapi.yml
+  url: openapi/_original/kataai-nlu-prediction-openapi.yml
   name: Kata.ai NL Prediction API (OpenAPI)
 - type: Authentication
   url: authentication/kataai-authentication.yml
