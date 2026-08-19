@@ -1,0 +1,120 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Kata.ai NL Prediction Auth Teams API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Teams",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get teams for a user",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://geist.kata.ai/users/:userId/teams",
+            "params": [
+              {
+                "name": "userId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get teams for a user"
+        },
+        {
+          "info": {
+            "name": "Create a team",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://geist.kata.ai/teams",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a team"
+        },
+        {
+          "info": {
+            "name": "Get a team",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://geist.kata.ai/teams/:teamId",
+            "params": [
+              {
+                "name": "teamId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get a team"
+        },
+        {
+          "info": {
+            "name": "Delete a team",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://geist.kata.ai/teams/:teamId",
+            "params": [
+              {
+                "name": "teamId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Delete a team"
+        },
+        {
+          "info": {
+            "name": "Add a member to a team",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://geist.kata.ai/teams/:teamId/users/:userId",
+            "params": [
+              {
+                "name": "teamId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "userId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Add a member to a team"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,217 @@
+{
+  "item": [
+    {
+      "id": "a7d7335b-b20d-4c7d-8067-773ebb70efa5",
+      "name": "Prediction",
+      "description": {
+        "content": "Run entity prediction against a deployed NLU model.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "9bc43984-7d7d-49f1-bb54-017d4dd1848b",
+          "name": "Predict entities for a sentence",
+          "request": {
+            "name": "Predict entities for a sentence",
+            "description": {
+              "content": "Runs the deployed NLU model identified by nluId against the input text and returns detected entities grouped by entity name. Obtain the API token from NL Studio > Settings.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "nlus",
+                ":nluId",
+                "predict"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "nluId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"text\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "2e634387-8d9f-4793-9bfb-b404129f7bfd",
+              "name": "Prediction result",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "nlus",
+                    ":nluId",
+                    "predict"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "nluId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"text\": \"ada satu bebek dan lima kucing di sawah\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"result\": {\n    \"ner\": [\n      {\n        \"type\": \"phrase\",\n        \"score\": 0.9999965645021311,\n        \"value\": \"sawah\",\n        \"label\": \"LOCATION\",\n        \"start\": 34,\n        \"end\": 39\n      }\n    ],\n    \"animal\": [\n      {\n        \"type\": \"dict\",\n        \"score\": 0.7501584501364904,\n        \"value\": \"bebek\",\n        \"start\": 9,\n        \"end\": 14,\n        \"resolved\": {\n          \"dictKey\": \"duck\"\n        }\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e3507b50-91c2-41ef-89ab-a6cf8e0f3143",
+              "name": "You're not authorized to view this page.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "nlus",
+                    ":nluId",
+                    "predict"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "nluId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"text\": \"ada satu bebek dan lima kucing di sawah\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://geist.kata.ai",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "2a450870-57ab-4bab-8147-76da3fd91fcf",
+    "name": "Kata.ai NL Auth Prediction API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Kata.ai Natural Language (NL) Prediction API exposes a trained Natural Language Understanding model built in NL Studio so it can be called from any application. Given an input sentence it returns detected entities (trait, dict, phrase) with scores, spans, resolved values, and entity relationships. Reconstructed from the published Kata Platform documentation (kata-ai/kata-platform-docs, nl-studio/nl-prediction-api); an API Evangelist derived specification, not a Kata.ai-published OpenAPI.\n\nContact Support:\n Name: Kata.ai\n Email: business@kata.ai",
+      "type": "text/plain"
+    }
+  }
+}

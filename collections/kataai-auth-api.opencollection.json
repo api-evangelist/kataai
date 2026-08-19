@@ -1,0 +1,39 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Kata.ai NL Prediction Auth API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Auth",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Login and obtain a bearer token",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://geist.kata.ai/login",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Authenticate with username and password to receive a bearer token."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

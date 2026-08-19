@@ -1,0 +1,124 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Kata.ai NL Prediction Auth Environments API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Environments",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List all environments",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://geist.kata.ai/projects/:projectId/environments",
+            "params": [
+              {
+                "name": "projectId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "List all environments"
+        },
+        {
+          "info": {
+            "name": "Create an environment",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://geist.kata.ai/projects/:projectId/environments",
+            "params": [
+              {
+                "name": "projectId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create an environment"
+        },
+        {
+          "info": {
+            "name": "Get an environment",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://geist.kata.ai/projects/:projectId/environments/:environmentId",
+            "params": [
+              {
+                "name": "projectId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "environmentId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get an environment"
+        },
+        {
+          "info": {
+            "name": "Update an environment (change deployment version)",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://geist.kata.ai/projects/:projectId/environments/:environmentId",
+            "params": [
+              {
+                "name": "projectId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "environmentId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update an environment (change deployment version)"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

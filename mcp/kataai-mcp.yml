@@ -2,10 +2,9 @@ generated: '2026-07-19'
 method: derived
 status: candidate
 source: openapi/kataai-platform-openapi.yml, openapi/kataai-nlu-prediction-openapi.yml
-notes: >-
-  Kata.ai does not publish an official MCP server. This is a candidate tool list
-  derived one-per-operation from the Kata Platform Public API and NL Prediction
-  API OpenAPI definitions, as a starting point for an MCP wrapper.
+notes: Kata.ai does not publish an official MCP server. This is a candidate tool list derived one-per-operation
+  from the Kata Platform Public API and NL Prediction API OpenAPI definitions, as a starting point for
+  an MCP wrapper.
 server:
   name: kataai
   transport: http
@@ -52,3 +51,9 @@ tools:
 - name: predict
   description: Predict entities for a sentence against a deployed NLU model.
   source_operation: openapi/kataai-nlu-prediction-openapi.yml#predict
+deployment:
+  mode: none
+  verified: derived
+  tools: 14
+  checked: '2026-08-12'
+  source: catalog MCP census

@@ -1,0 +1,753 @@
+{
+  "item": [
+    {
+      "id": "ec69e451-1337-46b2-91cf-90982516a4fa",
+      "name": "Bots",
+      "description": {
+        "content": "Bot revisions and drafts.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "56e34a85-c81c-4812-be44-97834486fa93",
+          "name": "Get the project bot",
+          "request": {
+            "name": "Get the project bot",
+            "description": {},
+            "url": {
+              "path": [
+                "projects",
+                ":projectId",
+                "bot",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "projectId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "a87e1e74-8e3f-46ea-95f9-77db34503ecf",
+              "name": "Bot",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "projects",
+                    ":projectId",
+                    "bot",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "projectId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"name\": \"string\",\n  \"version\": \"string\",\n  \"desc\": \"string\",\n  \"lang\": \"string\",\n  \"timezone\": 3673,\n  \"flows\": {\n    \"key_0\": 2433.986044421037,\n    \"key_1\": 9551\n  },\n  \"nlus\": {\n    \"key_0\": \"string\",\n    \"key_1\": \"string\",\n    \"key_2\": false,\n    \"key_3\": 2864\n  },\n  \"methods\": {\n    \"key_0\": 405,\n    \"key_1\": \"string\"\n  },\n  \"config\": {\n    \"key_0\": 5812.331979284915,\n    \"key_1\": \"string\",\n    \"key_2\": \"string\",\n    \"key_3\": 1672\n  },\n  \"revision\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "6a4b6139-5afe-4301-9c35-551641fcfc62",
+              "name": "You're not authorized to view this page.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "projects",
+                    ":projectId",
+                    "bot",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "projectId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"string\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ff250152-1144-4264-8355-bc519164de0d",
+          "name": "Update bot (create a new bot revision)",
+          "request": {
+            "name": "Update bot (create a new bot revision)",
+            "description": {
+              "content": "Updating a bot is done by creating a new bot revision. Rejected if the version already exists.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "projects",
+                ":projectId",
+                "bot",
+                "revisions",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "projectId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"id\": \"<string>\",\n  \"name\": \"<string>\",\n  \"version\": \"<string>\",\n  \"desc\": \"<string>\",\n  \"lang\": \"<string>\",\n  \"timezone\": \"<integer>\",\n  \"flows\": {\n    \"key_0\": 4107\n  },\n  \"nlus\": {\n    \"key_0\": true\n  },\n  \"methods\": {\n    \"key_0\": 131\n  },\n  \"config\": {\n    \"key_0\": 1394,\n    \"key_1\": 8996.652057905761\n  },\n  \"revision\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "7fc6cab2-a41b-4039-9af4-be3d7782b2e3",
+              "name": "New bot revision",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "projects",
+                    ":projectId",
+                    "bot",
+                    "revisions",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "projectId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"id\": \"<string>\",\n  \"name\": \"<string>\",\n  \"version\": \"<string>\",\n  \"desc\": \"<string>\",\n  \"lang\": \"<string>\",\n  \"timezone\": \"<integer>\",\n  \"flows\": {\n    \"key_0\": 6908.4631839681,\n    \"key_1\": \"string\"\n  },\n  \"nlus\": {\n    \"key_0\": 4019.6550026204613,\n    \"key_1\": 5226,\n    \"key_2\": false\n  },\n  \"methods\": {\n    \"key_0\": 8281,\n    \"key_1\": 1119\n  },\n  \"config\": {\n    \"key_0\": 4491.604073608144,\n    \"key_1\": false\n  },\n  \"revision\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"<string>\",\n  \"name\": \"<string>\",\n  \"version\": \"<string>\",\n  \"desc\": \"<string>\",\n  \"lang\": \"<string>\",\n  \"timezone\": \"<integer>\",\n  \"flows\": {\n    \"key_0\": 6908.4631839681,\n    \"key_1\": \"string\"\n  },\n  \"nlus\": {\n    \"key_0\": 4019.6550026204613,\n    \"key_1\": 5226,\n    \"key_2\": false\n  },\n  \"methods\": {\n    \"key_0\": 8281,\n    \"key_1\": 1119\n  },\n  \"config\": {\n    \"key_0\": 4491.604073608144,\n    \"key_1\": false\n  },\n  \"revision\": \"<string>\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "8df5976f-8e16-4e36-a8f6-1d3bb45a2bcc",
+              "name": "Wrong API usage. Please refer to the documentation!",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "projects",
+                    ":projectId",
+                    "bot",
+                    "revisions",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "projectId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"id\": \"<string>\",\n  \"name\": \"<string>\",\n  \"version\": \"<string>\",\n  \"desc\": \"<string>\",\n  \"lang\": \"<string>\",\n  \"timezone\": \"<integer>\",\n  \"flows\": {\n    \"key_0\": 6908.4631839681,\n    \"key_1\": \"string\"\n  },\n  \"nlus\": {\n    \"key_0\": 4019.6550026204613,\n    \"key_1\": 5226,\n    \"key_2\": false\n  },\n  \"methods\": {\n    \"key_0\": 8281,\n    \"key_1\": 1119\n  },\n  \"config\": {\n    \"key_0\": 4491.604073608144,\n    \"key_1\": false\n  },\n  \"revision\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"string\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "9429fb0e-948b-4a61-b7ee-a9c417ccf27c",
+              "name": "You're not authorized to view this page.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "projects",
+                    ":projectId",
+                    "bot",
+                    "revisions",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "projectId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"id\": \"<string>\",\n  \"name\": \"<string>\",\n  \"version\": \"<string>\",\n  \"desc\": \"<string>\",\n  \"lang\": \"<string>\",\n  \"timezone\": \"<integer>\",\n  \"flows\": {\n    \"key_0\": 6908.4631839681,\n    \"key_1\": \"string\"\n  },\n  \"nlus\": {\n    \"key_0\": 4019.6550026204613,\n    \"key_1\": 5226,\n    \"key_2\": false\n  },\n  \"methods\": {\n    \"key_0\": 8281,\n    \"key_1\": 1119\n  },\n  \"config\": {\n    \"key_0\": 4491.604073608144,\n    \"key_1\": false\n  },\n  \"revision\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"string\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "e61d6b99-3da3-44ee-8ceb-8a83b2421194",
+          "name": "Get bot draft",
+          "request": {
+            "name": "Get bot draft",
+            "description": {},
+            "url": {
+              "path": [
+                "projects",
+                ":projectId",
+                "bot",
+                "draft"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "projectId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "12d01f14-3929-43d9-8c84-d1de4c07cdc8",
+              "name": "Bot draft",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "projects",
+                    ":projectId",
+                    "bot",
+                    "draft"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "projectId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "b7829b58-34d7-45ca-9f3d-db023c3f0d27",
+          "name": "Create or update bot draft",
+          "request": {
+            "name": "Create or update bot draft",
+            "description": {},
+            "url": {
+              "path": [
+                "projects",
+                ":projectId",
+                "bot",
+                "draft"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "projectId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "<object>",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "d34e1c7d-4d43-4dd8-be67-b2e1c2cacfcc",
+              "name": "Draft id",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "projects",
+                    ":projectId",
+                    "bot",
+                    "draft"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "projectId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "<object>",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"draftId\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "3b7991fc-e1a1-4dad-b84a-632f4ce2fff1",
+          "name": "Delete bot draft",
+          "request": {
+            "name": "Delete bot draft",
+            "description": {},
+            "url": {
+              "path": [
+                "projects",
+                ":projectId",
+                "bot",
+                "draft"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "projectId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "f1538a2e-473b-4cf4-8612-465bfba61699",
+              "name": "Draft id",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "projects",
+                    ":projectId",
+                    "bot",
+                    "draft"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "projectId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"draftId\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://geist.kata.ai",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "33781c89-7dcf-4b27-af7e-e4b395434da3",
+    "name": "Kata.ai NL Prediction Auth Bots API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Kata.ai Natural Language (NL) Prediction API exposes a trained Natural Language Understanding model built in NL Studio so it can be called from any application. Given an input sentence it returns detected entities (trait, dict, phrase) with scores, spans, resolved values, and entity relationships. Reconstructed from the published Kata Platform documentation (kata-ai/kata-platform-docs, nl-studio/nl-prediction-api); an API Evangelist derived specification, not a Kata.ai-published OpenAPI.\n\nContact Support:\n Name: Kata.ai\n Email: business@kata.ai",
+      "type": "text/plain"
+    }
+  }
+}

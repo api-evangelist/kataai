@@ -1,0 +1,102 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Kata.ai NL Prediction Auth NLU API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "NLU",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List NLUs",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://geist.kata.ai/projects/:projectId/nlus",
+            "params": [
+              {
+                "name": "projectId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "List NLUs"
+        },
+        {
+          "info": {
+            "name": "Get an NLU",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://geist.kata.ai/projects/:projectId/nlus/:nluName",
+            "params": [
+              {
+                "name": "projectId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "nluName",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get an NLU"
+        },
+        {
+          "info": {
+            "name": "Update an NLU",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://geist.kata.ai/projects/:projectId/nlus/:nluName",
+            "params": [
+              {
+                "name": "projectId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "nluName",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update an NLU"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

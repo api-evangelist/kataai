@@ -1,0 +1,155 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Kata.ai NL Prediction Auth Deployments API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Deployments",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Create a new deployment version",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://geist.kata.ai/projects/:projectId/deployment/versions",
+            "params": [
+              {
+                "name": "projectId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a new deployment version"
+        },
+        {
+          "info": {
+            "name": "Get the latest deployment version",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://geist.kata.ai/projects/:projectId/deployment/",
+            "params": [
+              {
+                "name": "projectId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get the latest deployment version"
+        },
+        {
+          "info": {
+            "name": "List deployment versions",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://geist.kata.ai/projects/:projectId/deployment/versions/",
+            "params": [
+              {
+                "name": "projectId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "List deployment versions"
+        },
+        {
+          "info": {
+            "name": "Get a deployment version",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://geist.kata.ai/projects/:projectId/deployment/versions/:version",
+            "params": [
+              {
+                "name": "projectId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "version",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get a deployment version"
+        },
+        {
+          "info": {
+            "name": "Update a deployment version",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://geist.kata.ai/projects/:projectId/deployment/versions/:version",
+            "params": [
+              {
+                "name": "projectId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "version",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update a deployment version"
+        },
+        {
+          "info": {
+            "name": "Delete a deployment version",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://geist.kata.ai/projects/:projectId/deployment/versions/:version",
+            "params": [
+              {
+                "name": "projectId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "version",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Delete a deployment version"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

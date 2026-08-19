@@ -1,0 +1,46 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Kata.ai NL Auth Prediction API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Prediction",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Predict entities for a sentence",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://geist.kata.ai/nlus/:nluId/predict",
+            "params": [
+              {
+                "name": "nluId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Runs the deployed NLU model identified by nluId against the input text and returns detected entities grouped by entity name. Obtain the API token from NL Studio > Settings."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

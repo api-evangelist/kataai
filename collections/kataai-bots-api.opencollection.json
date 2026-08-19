@@ -1,0 +1,122 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Kata.ai NL Prediction Auth Bots API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Bots",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get the project bot",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://geist.kata.ai/projects/:projectId/bot/",
+            "params": [
+              {
+                "name": "projectId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get the project bot"
+        },
+        {
+          "info": {
+            "name": "Update bot (create a new bot revision)",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://geist.kata.ai/projects/:projectId/bot/revisions/",
+            "params": [
+              {
+                "name": "projectId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Updating a bot is done by creating a new bot revision. Rejected if the version already exists."
+        },
+        {
+          "info": {
+            "name": "Get bot draft",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://geist.kata.ai/projects/:projectId/bot/draft",
+            "params": [
+              {
+                "name": "projectId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get bot draft"
+        },
+        {
+          "info": {
+            "name": "Create or update bot draft",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://geist.kata.ai/projects/:projectId/bot/draft",
+            "params": [
+              {
+                "name": "projectId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create or update bot draft"
+        },
+        {
+          "info": {
+            "name": "Delete bot draft",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://geist.kata.ai/projects/:projectId/bot/draft",
+            "params": [
+              {
+                "name": "projectId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Delete bot draft"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,172 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Kata.ai NL Prediction Auth Channels API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Channels",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List channels",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://geist.kata.ai/projects/:projectId/environments/:environmentId/channels",
+            "params": [
+              {
+                "name": "projectId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "environmentId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "List channels"
+        },
+        {
+          "info": {
+            "name": "Create a channel",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://geist.kata.ai/projects/:projectId/environments/:environmentId/channels",
+            "params": [
+              {
+                "name": "projectId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "environmentId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a channel"
+        },
+        {
+          "info": {
+            "name": "Get a channel",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://geist.kata.ai/projects/:projectId/environments/:environmentId/channels/:channelId",
+            "params": [
+              {
+                "name": "projectId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "environmentId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "channelId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get a channel"
+        },
+        {
+          "info": {
+            "name": "Update a channel",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://geist.kata.ai/projects/:projectId/environments/:environmentId/channels/:channelId",
+            "params": [
+              {
+                "name": "projectId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "environmentId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "channelId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update a channel"
+        },
+        {
+          "info": {
+            "name": "Delete a channel",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://geist.kata.ai/projects/:projectId/environments/:environmentId/channels/:channelId",
+            "params": [
+              {
+                "name": "projectId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "environmentId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "channelId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Delete a channel"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
