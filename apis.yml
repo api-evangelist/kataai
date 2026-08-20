@@ -52,6 +52,8 @@ apis:
   humanURL: https://docs.kata.ai/kata-platform
   baseURL: https://api.kata.ai
   tags:
+  - Authentication
+  tags_raw:
   - Auth
   properties:
   - type: OpenAPI
@@ -82,6 +84,8 @@ apis:
   humanURL: https://docs.kata.ai/kata-platform
   baseURL: https://api.kata.ai
   tags:
+  - Deployment
+  tags_raw:
   - Deployments
   properties:
   - type: OpenAPI
@@ -122,6 +126,8 @@ apis:
   humanURL: https://docs.kata.ai/kata-platform
   baseURL: https://api.kata.ai
   tags:
+  - Project
+  tags_raw:
   - Projects
   properties:
   - type: OpenAPI
@@ -132,6 +138,8 @@ apis:
   humanURL: https://docs.kata.ai/kata-platform
   baseURL: https://api.kata.ai
   tags:
+  - Team
+  tags_raw:
   - Teams
   properties:
   - type: OpenAPI
