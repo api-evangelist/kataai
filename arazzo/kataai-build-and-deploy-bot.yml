@@ -4,8 +4,17 @@ info:
   version: 1.0.0
   summary: Log in, create a project, push a bot revision, cut a deployment version, and bind an environment.
 sourceDescriptions:
-- name: platform
-  url: ../openapi/kataai-platform-openapi.yml
+- name: authApi
+  url: ../openapi/kataai-auth-api-openapi.yml
+  type: openapi
+- name: deploymentsApi
+  url: ../openapi/kataai-deployments-api-openapi.yml
+  type: openapi
+- name: environmentsApi
+  url: ../openapi/kataai-environments-api-openapi.yml
+  type: openapi
+- name: projectsApi
+  url: ../openapi/kataai-projects-api-openapi.yml
   type: openapi
 workflows:
 - workflowId: buildAndDeployBot
@@ -18,12 +27,12 @@ workflows:
     type: object
     required: [username, password, projectName]
     properties:
-      username: { type: string }
-      password: { type: string }
-      projectName: { type: string, default: My New Project }
-      version: { type: string, default: 0.0.1 }
-      environmentName: { type: string, default: Development }
-      environmentSlug: { type: string, default: my-bot-dev }
+      username: {type: string}
+      password: {type: string}
+      projectName: {type: string, default: My New Project}
+      version: {type: string, default: 0.0.1}
+      environmentName: {type: string, default: Development}
+      environmentSlug: {type: string, default: my-bot-dev}
   steps:
   - stepId: login
     operationId: login
