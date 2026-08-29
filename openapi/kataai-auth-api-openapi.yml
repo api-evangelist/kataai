@@ -1,19 +1,19 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: Kata.ai NL Prediction Auth API
-  description: The Kata.ai Natural Language (NL) Prediction API exposes a trained Natural Language Understanding model built in NL Studio so it can be called from any application. Given an input sentence it returns detected entities (trait, dict, phrase) with scores, spans, resolved values, and entity relationships. Reconstructed from the published Kata Platform documentation (kata-ai/kata-platform-docs, nl-studio/nl-prediction-api); an API Evangelist derived specification, not a Kata.ai-published OpenAPI.
+  title: Kata.ai Platform Public Auth API
+  description: Public REST API for the Kata Platform (Kata.ai). Manage bot projects, bots and drafts, deployments, environments, messaging channels, teams, and Natural Language Understanding (NLU) models used to build Indonesian conversational AI assistants. Reconstructed from the published Kata Platform documentation (kata-ai/kata-platform-docs); this is an API Evangelist derived specification, not a Kata.ai-published OpenAPI file.
   version: 1.0.0
   contact:
     name: Kata.ai
     email: business@kata.ai
-    url: https://docs.kata.ai/nl-studio/nl-prediction-api
+    url: https://docs.kata.ai/kata-platform
   x-provenance:
     generated: '2026-07-19'
     method: generated
-    source: https://github.com/kata-ai/kata-platform-docs/blob/master/docs/nl-studio/nl-prediction-api.md
+    source: https://github.com/kata-ai/kata-platform-docs/blob/master/docs/api/kataai-public-api.md
 servers:
-- url: https://geist.kata.ai
-  description: Kata.ai NL Prediction API host
+- url: https://api.kata.ai
+  description: Kata Platform public API (default zaunUrl in kata-cli)
 security:
 - bearerAuth: []
 tags:
@@ -58,26 +58,26 @@ paths:
           $ref: '#/components/responses/ServerError'
 components:
   responses:
-    ServerError:
-      description: Server is not available at the moment. We are working on it.
-      content:
-        application/json:
-          schema:
-            type: string
     BadRequest:
       description: Wrong API usage. Please refer to the documentation!
       content:
         application/json:
           schema:
             type: string
-    TooManyRequests:
-      description: Ratelimit exceeded! 100 per minute
+    ServerError:
+      description: Server is not available at the moment. We are working on it.
       content:
         application/json:
           schema:
             type: string
     Forbidden:
       description: You're not authorized to view this page.
+      content:
+        application/json:
+          schema:
+            type: string
+    TooManyRequests:
+      description: Ratelimit exceeded! 100 per minute
       content:
         application/json:
           schema:
@@ -107,4 +107,4 @@ components:
     bearerAuth:
       type: http
       scheme: bearer
-      description: 'Bearer token from NL Studio Settings (Authorization: Bearer <token>).'
+      description: 'Bearer token in the Authorization header (Authorization: Bearer <token>). The token may alternatively be supplied as a ?token= query string parameter.'

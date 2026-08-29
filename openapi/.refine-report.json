@@ -1,30 +1,37 @@
 {
   "provider": "kataai",
   "sources": [
-    "kataai-auth-api-openapi.yml",
-    "kataai-bots-api-openapi.yml",
-    "kataai-channels-api-openapi.yml",
-    "kataai-deployments-api-openapi.yml",
-    "kataai-environments-api-openapi.yml",
-    "kataai-nlu-api-openapi.yml",
-    "kataai-prediction-api-openapi.yml",
-    "kataai-projects-api-openapi.yml",
-    "kataai-teams-api-openapi.yml"
+    "_original/kataai-nlu-prediction-openapi.yml",
+    "_original/kataai-platform-openapi.yml"
   ],
   "outputs": [
+    "kataai-prediction-api-openapi.yml",
     "kataai-auth-api-openapi.yml",
     "kataai-bots-api-openapi.yml",
     "kataai-channels-api-openapi.yml",
     "kataai-deployments-api-openapi.yml",
     "kataai-environments-api-openapi.yml",
     "kataai-nlu-api-openapi.yml",
-    "kataai-prediction-api-openapi.yml",
     "kataai-projects-api-openapi.yml",
     "kataai-teams-api-openapi.yml"
   ],
   "archived": [],
   "errors": [],
   "warnings": [],
-  "notes": [],
-  "skipped": []
+  "notes": [
+    "sourced from openapi/_original/ (2 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "kataai-nlu-prediction-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
+    "kataai-platform-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0"
+  ],
+  "skipped": [
+    "kataai-auth-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "kataai-bots-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "kataai-channels-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "kataai-deployments-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "kataai-environments-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "kataai-nlu-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "kataai-prediction-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "kataai-projects-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "kataai-teams-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+  ]
 }

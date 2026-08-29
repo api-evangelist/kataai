@@ -1,6 +1,6 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: Kata.ai NL Auth Prediction API
+  title: Kata.ai NL Prediction API
   description: The Kata.ai Natural Language (NL) Prediction API exposes a trained Natural Language Understanding model built in NL Studio so it can be called from any application. Given an input sentence it returns detected entities (trait, dict, phrase) with scores, spans, resolved values, and entity relationships. Reconstructed from the published Kata Platform documentation (kata-ai/kata-platform-docs, nl-studio/nl-prediction-api); an API Evangelist derived specification, not a Kata.ai-published OpenAPI.
   version: 1.0.0
   contact:
@@ -73,15 +73,6 @@ paths:
           description: You're not authorized to view this page.
 components:
   schemas:
-    PredictionResult:
-      type: object
-      properties:
-        result:
-          type: object
-          additionalProperties:
-            type: array
-            items:
-              $ref: '#/components/schemas/Entity'
     Entity:
       type: object
       properties:
@@ -113,6 +104,15 @@ components:
         resolved:
           type: object
           additionalProperties: true
+    PredictionResult:
+      type: object
+      properties:
+        result:
+          type: object
+          additionalProperties:
+            type: array
+            items:
+              $ref: '#/components/schemas/Entity'
   securitySchemes:
     bearerAuth:
       type: http
