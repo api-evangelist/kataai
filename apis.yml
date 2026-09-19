@@ -109,6 +109,8 @@ apis:
   humanURL: https://docs.kata.ai/kata-platform
   baseURL: https://api.kata.ai
   tags:
+  - Environment
+  tags_raw:
   - Environments
   properties:
   - type: OpenAPI
@@ -129,6 +131,8 @@ apis:
   humanURL: https://docs.kata.ai/kata-platform
   baseURL: https://api.kata.ai
   tags:
+  - Predictions
+  tags_raw:
   - Prediction
   properties:
   - type: OpenAPI
