@@ -101,14 +101,14 @@ paths:
                 $ref: '#/components/schemas/Environment'
 components:
   parameters:
-    ProjectId:
-      name: projectId
+    EnvironmentId:
+      name: environmentId
       in: path
       required: true
       schema:
         type: string
-    EnvironmentId:
-      name: environmentId
+    ProjectId:
+      name: projectId
       in: path
       required: true
       schema:
@@ -127,6 +127,17 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Environment'
+    CreateEnvironmentRequest:
+      type: object
+      properties:
+        depId:
+          type: string
+        depVersion:
+          type: string
+        name:
+          type: string
+        slug:
+          type: string
     Environment:
       type: object
       required:
@@ -143,17 +154,6 @@ components:
         deploymentId:
           type: string
         deploymentVersion:
-          type: string
-    CreateEnvironmentRequest:
-      type: object
-      properties:
-        depId:
-          type: string
-        depVersion:
-          type: string
-        name:
-          type: string
-        slug:
           type: string
   securitySchemes:
     bearerAuth:

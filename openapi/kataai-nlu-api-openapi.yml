@@ -84,19 +84,6 @@ paths:
                 $ref: '#/components/schemas/NluSummary'
 components:
   schemas:
-    NluList:
-      type: object
-      properties:
-        page:
-          type: integer
-        limit:
-          type: integer
-        total:
-          type: integer
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/NluSummary'
     NLU:
       type: object
       required:
@@ -128,6 +115,19 @@ components:
           type: string
         visibility:
           type: string
+    NluList:
+      type: object
+      properties:
+        page:
+          type: integer
+        limit:
+          type: integer
+        total:
+          type: integer
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/NluSummary'
   parameters:
     ProjectId:
       name: projectId

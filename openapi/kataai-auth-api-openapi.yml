@@ -58,8 +58,8 @@ paths:
           $ref: '#/components/responses/ServerError'
 components:
   responses:
-    BadRequest:
-      description: Wrong API usage. Please refer to the documentation!
+    TooManyRequests:
+      description: Ratelimit exceeded! 100 per minute
       content:
         application/json:
           schema:
@@ -76,8 +76,8 @@ components:
         application/json:
           schema:
             type: string
-    TooManyRequests:
-      description: Ratelimit exceeded! 100 per minute
+    BadRequest:
+      description: Wrong API usage. Please refer to the documentation!
       content:
         application/json:
           schema:

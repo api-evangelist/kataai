@@ -1,0 +1,29 @@
+# Front Door AI Index — kataai — 2026-09-17
+# AI vocabulary counted on the provider's root page. Generated; do not edit.
+# `score` is null unless ownership is `own` — see front_door_ai.py.
+front_door_ai:
+  slug: kataai
+  lexicon_version: '1.0'
+  probed_at: '2026-09-17'
+  host: kata.ai
+  final_host: kata.ai
+  ownership: own
+  owner: kataai
+  shares_host_with: null
+  inherited_from: null
+  verdict: scored
+  score: 54
+  host_score: 54
+  density: 23.12
+  words: 2336
+  tiers:
+    agentic: 27
+    core: 27
+    model: 0
+  ambiguous: 17
+  top_terms:
+    AI: 26
+    chatbot: 18
+    agent: 17
+    AI agent: 9
+    gen ai: 1
