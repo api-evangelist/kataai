@@ -84,6 +84,15 @@ paths:
                 $ref: '#/components/schemas/NluSummary'
 components:
   schemas:
+    NluSummary:
+      type: object
+      properties:
+        name:
+          type: string
+        lang:
+          type: string
+        visibility:
+          type: string
     NLU:
       type: object
       required:
@@ -106,15 +115,6 @@ components:
         entities:
           type: object
           additionalProperties: true
-    NluSummary:
-      type: object
-      properties:
-        name:
-          type: string
-        lang:
-          type: string
-        visibility:
-          type: string
     NluList:
       type: object
       properties:
