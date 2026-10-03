@@ -114,6 +114,30 @@ components:
       schema:
         type: string
   schemas:
+    EnvironmentList:
+      type: object
+      properties:
+        page:
+          type: integer
+        limit:
+          type: integer
+        total:
+          type: integer
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/Environment'
+    CreateEnvironmentRequest:
+      type: object
+      properties:
+        depId:
+          type: string
+        depVersion:
+          type: string
+        name:
+          type: string
+        slug:
+          type: string
     Environment:
       type: object
       required:
@@ -131,30 +155,6 @@ components:
           type: string
         deploymentVersion:
           type: string
-    CreateEnvironmentRequest:
-      type: object
-      properties:
-        depId:
-          type: string
-        depVersion:
-          type: string
-        name:
-          type: string
-        slug:
-          type: string
-    EnvironmentList:
-      type: object
-      properties:
-        page:
-          type: integer
-        limit:
-          type: integer
-        total:
-          type: integer
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/Environment'
   securitySchemes:
     bearerAuth:
       type: http

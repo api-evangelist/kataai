@@ -115,6 +115,26 @@ paths:
                   draftId:
                     type: string
 components:
+  responses:
+    BadRequest:
+      description: Wrong API usage. Please refer to the documentation!
+      content:
+        application/json:
+          schema:
+            type: string
+    Forbidden:
+      description: You're not authorized to view this page.
+      content:
+        application/json:
+          schema:
+            type: string
+  parameters:
+    ProjectId:
+      name: projectId
+      in: path
+      required: true
+      schema:
+        type: string
   schemas:
     Bot:
       type: object
@@ -149,26 +169,6 @@ components:
           additionalProperties: true
         revision:
           type: string
-  responses:
-    BadRequest:
-      description: Wrong API usage. Please refer to the documentation!
-      content:
-        application/json:
-          schema:
-            type: string
-    Forbidden:
-      description: You're not authorized to view this page.
-      content:
-        application/json:
-          schema:
-            type: string
-  parameters:
-    ProjectId:
-      name: projectId
-      in: path
-      required: true
-      schema:
-        type: string
   securitySchemes:
     bearerAuth:
       type: http
