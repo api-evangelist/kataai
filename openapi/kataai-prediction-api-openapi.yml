@@ -73,15 +73,6 @@ paths:
           description: You're not authorized to view this page.
 components:
   schemas:
-    PredictionResult:
-      type: object
-      properties:
-        result:
-          type: object
-          additionalProperties:
-            type: array
-            items:
-              $ref: '#/components/schemas/Entity'
     Entity:
       type: object
       properties:
@@ -113,6 +104,15 @@ components:
         resolved:
           type: object
           additionalProperties: true
+    PredictionResult:
+      type: object
+      properties:
+        result:
+          type: object
+          additionalProperties:
+            type: array
+            items:
+              $ref: '#/components/schemas/Entity'
   securitySchemes:
     bearerAuth:
       type: http

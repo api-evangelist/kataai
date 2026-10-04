@@ -131,13 +131,6 @@ components:
         application/json:
           schema:
             type: string
-  parameters:
-    ProjectId:
-      name: projectId
-      in: path
-      required: true
-      schema:
-        type: string
   schemas:
     Deployment:
       type: object
@@ -159,6 +152,13 @@ components:
           type: string
         modules:
           type: 'null'
+  parameters:
+    ProjectId:
+      name: projectId
+      in: path
+      required: true
+      schema:
+        type: string
   securitySchemes:
     bearerAuth:
       type: http
