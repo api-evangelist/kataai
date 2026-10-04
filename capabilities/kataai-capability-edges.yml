@@ -1,0 +1,56 @@
+slug: kataai
+provider: Kata.ai
+generated_by: planning/capability-mapping/scripts/classify_capabilities.py
+model: claude-opus-5
+frame:
+- Software & Technology
+min_confidence: 0.7
+capability_model:
+  source: https://github.com/vincentmakes/turbo-ea-capabilities
+  license: CC-BY-4.0
+  attribution: Turbo EA Capabilities by Vincent Verdet — Turbo EA, https://github.com/vincentmakes/turbo-ea-capabilities,
+    CC BY 4.0
+  notice: NOTICE
+edge_count: 4
+edges:
+- tag: Environments
+  spec_file: kataai-environments-api-openapi.yml
+  capability_id: BC-4210.20
+  capability_id_l1: BC-4210
+  capability_name: Environment Management
+  confidence: 0.8
+  evidence: GET /projects/{projectId}/environments 'List all environments'; PUT .../environments/{environmentId}
+    'Update an environment (change deployment version)'
+  reason: Explicit provisioning and stewardship of named environments to which deployment versions are
+    assigned — environment management within release and deployment.
+- tag: Deployments
+  spec_file: kataai-deployments-api-openapi.yml
+  capability_id: BC-4210
+  capability_id_l1: BC-4210
+  capability_name: Software Release & Deployment Management
+  confidence: 0.75
+  evidence: POST /projects/{projectId}/deployment/versions 'Create a new deployment version'; GET /projects/{projectId}/deployment/
+    'Get the latest deployment version'
+  reason: Operations create, version, list and promote deployments of the bot software, which is release
+    and deployment management. Ambiguity between release engineering (versioning) and deployment orchestration,
+    so L1 only.
+- tag: NLU
+  spec_file: kataai-nlu-api-openapi.yml
+  capability_id: BC-610.60
+  capability_id_l1: BC-610
+  capability_name: Artificial Intelligence Management
+  confidence: 0.7
+  evidence: GET /projects/{projectId}/nlus 'List NLUs'; PUT /projects/{projectId}/nlus/{nluName} 'Update
+    an NLU'
+  reason: Lists and updates Natural Language Understanding models, i.e. management of ML model artefacts
+    — AI/ML model lifecycle.
+- tag: Prediction
+  spec_file: kataai-prediction-api-openapi.yml
+  capability_id: BC-610.60
+  capability_id_l1: BC-610
+  capability_name: Artificial Intelligence Management
+  confidence: 0.7
+  evidence: 'POST /nlus/{nluId}/predict ''Predict entities for a sentence''; description: ''exposes a
+    trained Natural Language Understanding model built in NL Studio so it can be called from any application'''
+  reason: Runtime inference against a trained ML model — part of the AI/ML model lifecycle (model serving)
+    rather than any domain business capability.

@@ -167,6 +167,9 @@ maintainers:
 - FN: APIs.json
   email: info@apis.io
 common:
+- type: CapabilityMap
+  url: capabilities/kataai-capability-edges.yml
+  name: Kata.ai Business Capability Map
 - type: Website
   url: https://kata.ai
 - type: DeveloperPortal
