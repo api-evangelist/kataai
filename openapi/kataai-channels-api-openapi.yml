@@ -115,6 +115,19 @@ paths:
               schema:
                 $ref: '#/components/schemas/Channel'
 components:
+  parameters:
+    EnvironmentId:
+      name: environmentId
+      in: path
+      required: true
+      schema:
+        type: string
+    ProjectId:
+      name: projectId
+      in: path
+      required: true
+      schema:
+        type: string
   schemas:
     Channel:
       type: object
@@ -164,19 +177,6 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Channel'
-  parameters:
-    EnvironmentId:
-      name: environmentId
-      in: path
-      required: true
-      schema:
-        type: string
-    ProjectId:
-      name: projectId
-      in: path
-      required: true
-      schema:
-        type: string
   securitySchemes:
     bearerAuth:
       type: http

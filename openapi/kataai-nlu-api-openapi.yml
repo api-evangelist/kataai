@@ -84,28 +84,6 @@ paths:
                 $ref: '#/components/schemas/NluSummary'
 components:
   schemas:
-    NLU:
-      type: object
-      required:
-      - name
-      - lang
-      - visibility
-      properties:
-        name:
-          type: string
-        lang:
-          type: string
-          enum:
-          - id
-          - en
-        visibility:
-          type: string
-          enum:
-          - public
-          - private
-        entities:
-          type: object
-          additionalProperties: true
     NluSummary:
       type: object
       properties:
@@ -128,6 +106,28 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/NluSummary'
+    NLU:
+      type: object
+      required:
+      - name
+      - lang
+      - visibility
+      properties:
+        name:
+          type: string
+        lang:
+          type: string
+          enum:
+          - id
+          - en
+        visibility:
+          type: string
+          enum:
+          - public
+          - private
+        entities:
+          type: object
+          additionalProperties: true
   parameters:
     ProjectId:
       name: projectId
