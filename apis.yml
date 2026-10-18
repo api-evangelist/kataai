@@ -53,6 +53,16 @@ tags:
 - Chatbots
 - AI Agents
 - Natural Language Understanding
+- Customer Experience
+- Messaging
+- Indonesia
+- Bots
+tags_raw:
+- Company
+- Conversational AI
+- Chatbots
+- AI Agents
+- Natural Language Understanding
 - NLU
 - Customer Experience
 - Messaging
@@ -121,6 +131,8 @@ apis:
   humanURL: https://docs.kata.ai/kata-platform
   baseURL: https://api.kata.ai
   tags:
+  - Natural Language Understanding
+  tags_raw:
   - NLU
   properties:
   - type: OpenAPI
