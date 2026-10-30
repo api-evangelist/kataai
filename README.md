@@ -64,6 +64,130 @@
 > Full detail: **[Where this data comes from](https://apievangelist.com/about/where-our-data-comes-from)**
 <!-- API-EVANGELIST-PROVENANCE:END -->
 
-Kata.ai is a company surfaced as a portfolio company of 500-global and added to the API Evangelist network as a stub for enrichment. This profile is a lead awaiting the enrichment pipeline.
+Kata.ai is an Indonesian enterprise conversational-AI company that builds AI agents and chatbots for customer experience, marketing, sales, and HR across financial services, retail, healthcare, automotive, and government. Its developer-facing Kata Platform lets teams create bot projects that bundle a Bot, CMS, and a Natural Language Understanding (NLU) model, then deploy them and connect messaging channels such as LINE, Telegram, WhatsApp, Facebook Messenger, Slack, and Qiscus. Kata.ai exposes a public REST API for managing projects, bots, deployments, environments, channels, teams, and NLUs, an NL Prediction API for entity extraction from a trained model, the kata command line tool, and the Aksara design system. Backed by 500 Global.
 
-Backed by: 500-global — https://kata.ai
+**Areas:** Company · Conversational AI · Chatbots · AI Agents · Natural Language Understanding · Customer Experience · Messaging · Indonesia · Bots
+
+## Kata.ai on APIs.io
+
+Everything profiled for Kata.ai is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/kataai/](https://apis.io/providers/kataai/)** — or go straight to one of the APIs or properties below.
+
+### APIs (9)
+
+- [Kata.ai Auth API](https://apis.io/apis/kataai/kataai-auth-api/) — Login and token issuance.
+- [Kata.ai Bots API](https://apis.io/apis/kataai/kataai-bots-api/) — Bot revisions and drafts.
+- [Kata.ai Channels API](https://apis.io/apis/kataai/kataai-channels-api/) — Messaging channels (LINE, Telegram, WhatsApp, etc.).
+- [Kata.ai Deployments API](https://apis.io/apis/kataai/kataai-deployments-api/) — Deployment versions of a project bot.
+- [Kata.ai Environments API](https://apis.io/apis/kataai/kataai-environments-api/) — Named environments binding a deployment version.
+- [Kata.ai NLU API](https://apis.io/apis/kataai/kataai-nlu-api/) — Natural Language Understanding models.
+- [Kata.ai Prediction API](https://apis.io/apis/kataai/kataai-prediction-api/) — Run entity prediction against a deployed NLU model.
+- [Kata.ai Projects API](https://apis.io/apis/kataai/kataai-projects-api/) — A project bundles one Bot, CMS, and/or NLU.
+- [Kata.ai Teams API](https://apis.io/apis/kataai/kataai-teams-api/) — Teams and membership.
+
+### Published properties
+
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
+
+#### Arazzo workflows (1)
+
+Multi-step workflows that chain operations into a business task.
+
+- [Build and deploy a Kata.ai bot](https://apis.io/arazzos/kataai/kataai-build-and-deploy-bot/)
+
+#### MCP servers (1)
+
+Model Context Protocol servers that expose the API to agents.
+
+- [kataai](https://apis.io/servers/kataai/kataai/)
+
+#### Collections (9)
+
+Postman and Open Collection request collections.
+
+- [Kata.ai NL Prediction Auth API](https://apis.io/collections/kataai/open-kataai-auth-api/)
+- [Kata.ai NL Prediction Auth Bots API](https://apis.io/collections/kataai/open-kataai-bots-api/)
+- [Kata.ai NL Prediction Auth Channels API](https://apis.io/collections/kataai/open-kataai-channels-api/)
+- [Kata.ai NL Prediction Auth Deployments API](https://apis.io/collections/kataai/open-kataai-deployments-api/)
+- [Kata.ai NL Prediction Auth Environments API](https://apis.io/collections/kataai/open-kataai-environments-api/)
+- [Kata.ai NL Prediction Auth NLU API](https://apis.io/collections/kataai/open-kataai-nlu-api/)
+- [Kata.ai NL Auth Prediction API](https://apis.io/collections/kataai/open-kataai-prediction-api/)
+- [Kata.ai NL Prediction Auth Projects API](https://apis.io/collections/kataai/open-kataai-projects-api/)
+- [Kata.ai NL Prediction Auth Teams API](https://apis.io/collections/kataai/open-kataai-teams-api/)
+
+#### Overlays (1)
+
+OpenAPI overlays, including conversational phrasing for each operation.
+
+- [Kataai Platform Overlay](https://apis.io/overlays/kataai/kataai-platform-overlay/)
+
+#### Security (2)
+
+Authentication, trust centre, and vulnerability disclosure.
+
+- [Kataai Authentication](https://apis.io/security/kataai/kataai-authentication/)
+- [Kataai Domain Security](https://apis.io/security/kataai/kataai-domain-security/)
+
+## Where to find this API
+
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
+
+- [Website](https://kata.ai)
+- [Documentation](https://docs.kata.ai/kata-platform)
+- [API reference](https://github.com/kata-ai/kata-platform-docs/blob/master/docs/api/kataai-public-api.md)
+- [Sign up](https://cx.kata.ai/register)
+- [Support](https://kata.ai/contact)
+- [Privacy policy](https://kata.ai/privacy-policy)
+- [GitHub](https://github.com/kata-ai)
+
+## API Evangelist rating
+
+**Kin Score 22.6** — emerging · rubric 0.24.0 · scored 2026-10-17
+
+| Facet | Score |
+|---|---|
+| Discoverability | 73.2 |
+| Contract quality | 0.0 |
+| Contract governance | 4.5 |
+| Operational transparency | 2.6 |
+| Developer ergonomics | 51.8 |
+| Access clarity | 10.5 |
+
+**Agent readiness 21.8** — agent-aware
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | — |
+| Reversibility Documented | — |
+| MCP Server | — |
+| Auth Clarity | bearer (partial credit) |
+| Idempotency | — |
+| Error Semantics | documented (partial credit) |
+| OpenAPI Examples | partial |
+| Rate Limit Signal | — |
+| Event Surface Described | — |
+| Agent Skills | derived (partial credit) |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+
+**Regulatory alignment 20.6** — AI & Biometrics
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/kataai/](https://apis.io/providers/kataai/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for Kata.ai: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/kataai/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
